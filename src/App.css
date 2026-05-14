@@ -1,8 +1,19 @@
+/* App.css */
+:root, body, #root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background-color:aliceblue; /* 원하는 색상 코드 */
+  margin: 0;
 }
 
 .logo {
@@ -40,3 +51,6 @@
 .read-the-docs {
   color: #888;
 }
+
+@import "tailwindcss";
+@plugin "daisyui";
