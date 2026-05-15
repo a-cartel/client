@@ -50,7 +50,7 @@ function App() {
                <div className="w-[80%] h-[80%] bg-slate-200 rounded-full animate-pulse"></div> {/* 포켓몬 이미지 대체 */}
             </div>
             <div className="bg-white/95 border-2 border-[#555] rounded-[4px] flex justify-center items-center shadow-[inset_0_2px_5px_rgba(0,0,0,0.1)]">
-               <div className="w-[80%] h-[80%] bg-slate-200 rounded-full animate-pulse"></div>
+              <div className="w-[80%] h-[80%] bg-slate-200 rounded-full animate-pulse"></div>
             </div>
             {/* 나머지 빈 슬롯 */}
             {[3, 4, 5, 6].map((i) => (

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import './App.css'
+import '../App.css'
 
-function Footer() {
+export default function Footer() {
     const [count, setCount] = useState(0)
 
     return (
@@ -49,4 +49,3 @@ function Footer() {
         </>
     )
 }
-export default Footer
