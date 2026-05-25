@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import battleFrontierImg from '../assets/BattleFrontier.png'
 
-export default function Mbti() {
+export default function MBTI() {
     const [count, setCount] = useState(0)
 
     return (

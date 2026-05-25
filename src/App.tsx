@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import Navbar from './components/Navbar.tsx'
 import Footer from './components/Footer.tsx'
-import NavBar from './components/NavBar.tsx'
+
 
 export default function App() {
   return (
     <>
-      <NavBar />
+      <Navbar />
       <Footer />
     </>
   )
