@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
 
@@ -33,7 +34,8 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-red-600 text-white hover:bg-red-400">ログイン</a>
+        <Link className="btn bg-red-600 text-white hover:bg-red-400" to="/Auth">로그인</Link>
+        {/* <a className="btn bg-red-600 text-white hover:bg-red-400">ログイン</a> */}
       </div>
     </div>
 
