@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import LoginImg from '../assets/Login.jpg'
-import RegisterImg from '../assets/register.jpg'
+import RegisterImg from '../assets/Register.jpg'
 
 // 861 927
 export default function Auth() {
