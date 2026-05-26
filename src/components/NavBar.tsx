@@ -34,7 +34,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn bg-red-600 text-white hover:bg-red-400" to="/Auth">로그인</Link>
+        <Link className="btn bg-red-600 text-white hover:bg-red-400" to="/Auth">ログイン</Link>
         {/* <a className="btn bg-red-600 text-white hover:bg-red-400">ログイン</a> */}
       </div>
     </div>
