@@ -25,12 +25,12 @@ export default function Navbar() {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><a className="hover:text-red-500">ホーム</a></li>
-          <li><a className="hover:text-red-500">ニュース</a></li>
-          <li><a className="hover:text-red-500">ショップ</a></li>
-          <li><a className="hover:text-red-500">グッズ</a></li>
-          <li><a className="hover:text-red-500">図鑑</a></li>
-          <li><a className="hover:text-red-500">診断</a></li>
+          <li><Link className="hover:text-red-500" to="/">ホーム</Link></li>
+          <li><Link className="hover:text-red-500" to="/News">ニュース</Link></li>
+          <li><Link className="hover:text-red-500" to="/Shop">ショップ</Link></li>
+          <li><Link className="hover:text-red-500" to="/Goods">グッズ</Link></li>
+          <li><Link className="hover:text-red-500" to="/Zukan">図鑑</Link></li>
+          <li><Link className="hover:text-red-500" to="/MBTI">診断</Link></li>
         </ul>
       </div>
       <div className="navbar-end">
