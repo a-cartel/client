@@ -1,120 +1,118 @@
 import { useState } from 'react'
 
-export default function MyPage() {
-    const [isEditing, setIsEditing] = useState(false)
-    const [nickname, setNickname] = useState('トレーナー')
-    const [email, setEmail] = useState('trainer@pokemon.com')
-    const [bio, setBio] = useState('ポケモンマスターを目指しています！')
+export default function Mypage() {
+    const [nickname, setNickname] = useState('サトシ')
+    const [password, setPassword] = useState('')
+    const [previewImg, setPreviewImg] = useState<string | null>(null)
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onloadend = () => setPreviewImg(reader.result as string)
+            reader.readAsDataURL(file)
+        }
+    }
 
     return (
         <div className="p-8 min-h-screen">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-2xl mx-auto">
 
-                {/* 프로필 카드 */}
-                <div className="card bg-base-100 shadow-sm mb-6">
-                    <div className="card-body">
-                        <div className="flex items-center gap-6">
+                {/* 제목 */}
+                {/* <div className="flex items-center gap-3 mb-8">
+                    <div className="w-1 h-8 bg-red-600 rounded"></div>
+                    <h2 className="text-3xl font-bold">プロフィール編集</h2>
+                    <span className="text-gray-400 text-sm">（프로필 정보 수정）</span>
+                </div> */}
 
-                            {/* 아바타 */}
-                            <div className="avatar">
-                                <div className="w-24 rounded-full ring ring-red-500 ring-offset-2">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="avatar" />
-                                </div>
+                {/* 카드 */}
+                <div className="bg-white rounded-2xl p-10 shadow-sm flex flex-col gap-8">
+
+                    {/* 프로필 이미지 */}
+                    <div className="flex flex-col gap-2">
+                        <label className="font-semibold">
+                            プロフィール画像
+                            {/* <span className="text-gray-400 text-xs ml-2">（프로필 이미지）</span> */}
+                        </label>
+                        <div className="flex items-center gap-4">
+                            <div className="w-20 h-20 rounded-lg bg-gray-200 flex items-center justify-center overflow-hidden">
+                                {previewImg ? (
+                                    <img src={previewImg} alt="preview" className="w-full h-full object-cover" />
+                                ) : (
+                                    <span className="text-gray-400 text-sm">Image</span>
+                                )}
                             </div>
-
-                            {/* 이름 & 이메일 */}
-                            <div className="flex flex-col gap-1">
-                                <h2 className="text-2xl font-bold">{nickname}</h2>
-                                <p className="text-sm text-gray-500">{email}</p>
-                                <p className="text-sm text-gray-400">{bio}</p>
-                            </div>
-
-                            {/* 편집 버튼 */}
-                            <button
-                                className="btn btn-sm ml-auto"
-                                onClick={() => setIsEditing(!isEditing)}
-                            >
-                                {isEditing ? '閉じる' : '編集'}
-                            </button>
-                        </div>
-
-                        {/* 편집 폼 */}
-                        {isEditing && (
-                            <div className="flex flex-col gap-4 mt-6">
+                            <label className="btn btn-outline cursor-pointer">
+                                画像を選択
+                                {/* （이미지 선택） */}
                                 <input
-                                    type="text"
-                                    placeholder="ニックネーム"
-                                    className="input input-bordered w-full"
-                                    value={nickname}
-                                    onChange={(e) => setNickname(e.target.value)}
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={handleImageChange}
                                 />
-                                <input
-                                    type="email"
-                                    placeholder="メールアドレス"
-                                    className="input input-bordered w-full"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                <textarea
-                                    placeholder="自己紹介"
-                                    className="textarea textarea-bordered w-full"
-                                    value={bio}
-                                    onChange={(e) => setBio(e.target.value)}
-                                />
-                                <div className="flex justify-end">
-                                    <button
-                                        className="btn bg-red-600 text-white"
-                                        onClick={() => setIsEditing(false)}
-                                    >
-                                        保存
-                                    </button>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                {/* 통계 카드 */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className="card bg-base-100 shadow-sm">
-                        <div className="card-body items-center text-center">
-                            <h3 className="text-3xl font-bold text-red-500">152</h3>
-                            <p className="text-sm text-gray-500">捕まえたポケモン</p>
+                            </label>
                         </div>
                     </div>
-                    <div className="card bg-base-100 shadow-sm">
-                        <div className="card-body items-center text-center">
-                            <h3 className="text-3xl font-bold text-red-500">48</h3>
-                            <p className="text-sm text-gray-500">バトル勝利</p>
-                        </div>
-                    </div>
-                    <div className="card bg-base-100 shadow-sm">
-                        <div className="card-body items-center text-center">
-                            <h3 className="text-3xl font-bold text-red-500">7</h3>
-                            <p className="text-sm text-gray-500">バッジ獲得</p>
-                        </div>
-                    </div>
-                </div>
 
-                {/* 최근 활동 */}
-                <div className="card bg-base-100 shadow-sm">
-                    <div className="card-body">
-                        <h3 className="text-lg font-bold mb-4">最近の活動</h3>
-                        <ul className="flex flex-col gap-3">
-                            {[
-                                { text: 'ピカチュウをゲットした！', time: '2時間前' },
-                                { text: 'ジムリーダーに勝利した！', time: '1日前' },
-                                { text: 'カビゴンと友達になった！', time: '3日前' },
-                            ].map((activity, index) => (
-                                <li key={index} className="flex justify-between items-center border-b pb-2 last:border-none">
-                                    <span className="text-sm">{activity.text}</span>
-                                    <span className="text-xs text-gray-400">{activity.time}</span>
-                                </li>
-                            ))}
-                        </ul>
+                    {/* 닉네임 */}
+                    <div className="flex flex-col gap-2">
+                        <label className="font-semibold">
+                            ニックネーム
+                            {/* <span className="text-gray-400 text-xs ml-2">（닉네임）</span> */}
+                        </label>
+                        <input
+                            type="text"
+                            className="input input-bordered w-full"
+                            value={nickname}
+                            onChange={(e) => setNickname(e.target.value)}
+                        />
                     </div>
-                </div>
 
+                    {/* 이메일 (변경 불가) */}
+                    <div className="flex flex-col gap-2">
+                        <label className="font-semibold">
+                            メールアドレス
+                            {/* <span className="text-gray-400 text-xs ml-2">（이메일）</span> */}
+                            <span className="text-red-500 text-xs ml-1">- 変更不可</span>
+                        </label>
+                        <input
+                            type="email"
+                            className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                            placeholder="example@pokemon.com"
+                            disabled
+                        />
+                    </div>
+
+                    {/* 새 비밀번호 */}
+                    <div className="flex flex-col gap-2">
+                        <label className="font-semibold">
+                            新しいパスワード
+                            {/* <span className="text-gray-400 text-xs ml-2">（새 비밀번호）</span> */}
+                        </label>
+                        <input
+                            type="password"
+                            className="input input-bordered w-full"
+                            // placeholder="変更する場合のみ入力（변경할 경우에만 입력）"
+                            placeholder="変更する場合のみ入力"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+
+                    {/* 버튼 */}
+                    <div className="flex gap-4">
+                        <button className="btn bg-red-600 text-white flex-1 text-base">
+                            保存する
+                            {/* （저장하기） */}
+                        </button>
+                        <button className="btn btn-outline flex-1 text-base">
+                            キャンセル
+                            {/* （취소） */}
+                        </button>
+                    </div>
+
+                </div>
             </div>
         </div>
     )

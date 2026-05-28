@@ -7,6 +7,7 @@ import Auth from './components/Auth.tsx'
 import Mypage from './components/Mypage.tsx'
 import News from './components/News.tsx'
 import Shop from './components/Shop.tsx'
+import Mbti from './components/Mbti.tsx'
 
 
 export default function App() {
@@ -22,11 +23,12 @@ export default function App() {
         */}
         <Route path="/News" element={<News />} />
         <Route path="/Shop" element={<Shop />} />
-        {/* 
-        <Route path="/Goods" element={<Goods />} />
-        <Route path="/Zukan" element={<Zukan />} />
-        <Route path="/MBTI" element={<MBTI />} />
-        */}
+        
+        {/* <Route path="/Goods" element={<Goods />} /> */}
+        {/* <Route path="/Zukan" element={<Zukan />} /> */}
+    
+        <Route path="/Mbti" element={<Mbti />} />
+       
       </Routes>
       </div>
       <Footer />

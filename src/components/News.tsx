@@ -43,6 +43,8 @@ export default function News() {
 
     // pagination 미적용 상태
     return (
+        
+        // <div className="flex flex-col items-center">
         <div className="flex flex-col items-center">
             <div className="p-8">
                 <h2 className="mb-8 text-xl font-bold ">ニュース</h2>
