@@ -1,181 +1,721 @@
 import { useState } from 'react'
-import battleFrontierImg from '../assets/BattleFrontier.png'
 
-export default function MBTI() {
-    const [count, setCount] = useState(0)
+// アセット、データ
+import battleFrontierImg from '../assets/BattleFrontier.png'
+import lanceImg from '../assets/Lance.png'
+import loreleiImg from '../assets/Lorelei.png'
+import aaronImg from '../assets/Aaron.png'
+import questionsData from './questions.json'
+import resultsData from './results.json'
+
+// イメージ参照文字列を実際のインポートされたモジュールにマッピングするオブジェクト
+// 例: 'lance'という文字列が入るとlanceImgモジュールを返す
+const imageMap: Record<string, string> = {
+    'lance': lanceImg,
+    'lorelei': loreleiImg,
+    'aaron': aaronImg,
+    'placeholder': '' 
+}
+
+export default function Mbti() {
+    const [step, setStep] = useState('start')
+    
+    // テストの進行状態
+    const [currentIdx, setCurrentIdx] = useState(0)
+
+    // MBTIタイプごとのスコア
+    const [scores, setScores] = useState({ EI: 0, SN: 0, TF: 0, JP: 0 })
+
+    // テスト開始ハンドラー
+    const [finalMbti, setFinalMbti] = useState('INTJ')
+
+    // 質問回答クリックハンドラー
+    const handleAnswer = (type: string, score: number) => {
+
+        // スコアの加算
+        const newScores = { ...scores, [type]: scores[type as keyof typeof scores] + score }
+        setScores(newScores)
+
+        // 最終問題か確認
+        if (currentIdx + 1 < questionsData.length) {
+            setCurrentIdx(currentIdx + 1)
+        } else {
+            // MBTI点数の計算
+            let resultString = ''
+            resultString += newScores.EI >= 0 ? 'E' : 'I'
+            resultString += newScores.SN >= 0 ? 'S' : 'N'
+            resultString += newScores.TF >= 0 ? 'T' : 'F'
+            resultString += newScores.JP >= 0 ? 'J' : 'P'
+            
+            setFinalMbti(resultString)
+            setStep('result')
+        }
+    }
+
+    // テストのリトライハンドラー
+    const handleRestart = () => {
+        setScores({ EI: 0, SN: 0, TF: 0, JP: 0 })
+        setCurrentIdx(0)
+        setStep('start')
+    }
+
+    // レンダリングに必要なデータ変数
+    const currentQ = questionsData[currentIdx]
+    const progressPercent = Math.round(((currentIdx + 1) / questionsData.length) * 100)
+    
+    // JSON内にデータがない場合のデフォルト値
+    const currentResult = (resultsData as any)[finalMbti] || (resultsData as any)["INTJ"]
 
     return (
-        <div className="p-20">
-            <div className="
-            
-            flex flex-col items-center justify-center 
-            
-            ">
-                {/* 
-            min-h-screen: 화면 전체 높이 확보
-            bg-[#f8f8ba]: 사용자 정의 배경색(밝은 노란색, 적용 확인용 추후 변경필수.)
-            flex flex-col items-center justify-center: 중앙 정렬
-            p-4: 패딩 추가
-            */}
+        <div className="
+            min-h-screen 
+            bg-[#f8f8ba] 
+            flex 
+            flex-col 
+            items-center 
+            justify-center 
+            p-4 
+            md:p-8
+        ">
 
-                {/* 메인 컨텐츠 박스: DaisyUI Card 컴포넌트 활용 */}
+        {/* 1. Start */}
+        {step === 'start' && (
                 <div className="
-            card lg:card-side 
-            bg-[#f3f7ff] 
-            shadow-2xl 
-            max-w-[850px] 
-            w-full 
-            overflow-hidden 
-            ">
-                    {/* 
-            card: DaisyUI 카드 스타일
-            lg:card-side: 큰 화면에서 가로 레이아웃, 작은 화면에서는 세로 레이아웃
-            bg-[#f3f7ff]: 카드 배경색
-            shadow-2xl: 그림자 효과
-            max-w-[850px]: 최대 너비 제한
-            w-full: 가로 전체 사용
-            overflow-hidden: 내용이 넘칠 때 숨김
-            */}
-
-                    {/* 1. 왼쪽 이미지 영역 */}
+                    card 
+                    lg:card-side 
+                    bg-[#f3f7ff] 
+                    shadow-2xl 
+                    max-w-[850px] 
+                    w-full 
+                    overflow-hidden
+                ">
                     <figure className="
-                lg:w-1/2 w-full
-                aspect-[16/10] 
-                lg:aspect-auto
-                ">
-                        <img
-                            src={battleFrontierImg}
-                            alt="Battle Frontier"
-                            className="w-full h-full object-cover"
-                        />
-                    </figure>
-                    {/* 
-                lg:w-1/2 w-full: 큰 화면에서 너비 50%, 작은 화면에서는 전체 너비
-                aspect-[16/10]: 작은 화면에서 16:10 비율 유지
-                lg:aspect-auto: 큰 화면에서는 원본 비율 유지
-                w-full: 가로 전체 사용
-                h-full: 세로 전체 사용
-                object-cover: 이미지가 영역을 완전히 덮도록 조절
-                */}
-
-                    {/* 2. 오른쪽 텍스트 및 버튼 영역 */}
-                    <div className="
-                card-body 
-                lg:w-1/2 
-                p-8 
-                justify-center 
-                text-left 
-                items-start
-                ">
-                        {/* 
-                card-body: DaisyUI 카드 본문 스타일
-                lg:w-1/2: 큰 화면에서 너비 50%
-                p-8: 패딩 추가
-                justify-center: 수직 중앙 정렬
-                text-left: 텍스트 왼쪽 정렬
-                items-start: 수평 시작점 정렬
-                */}
-
-
-
-                        {/* 타이틀 및 텍스트 */}
-                        <h1 className="
-                        block 
-                        text-[24px] 
-                        font-[900] 
-                        text-[#1a1a1a] 
-                        leading-[1.3]
-                        tracking-tight
+                        lg:w-1/2 
+                        w-full 
+                        aspect-[16/10] 
+                        lg:aspect-auto
                     ">
-                            あなたに似ているポケモントレーナーは？
-                            {/* 
-                    block: 요소를 블록으로 설정하여 줄 바꿈
-                    text-[24px]: 폰트 사이즈 24px
-                    font-[900]: 폰트 두께 900 (최강)
-                    text-[#1a1a1a]: 글자 색상
-                    leading-[1.3]: 줄 간격 1.3
-                    tracking-tight: 글자 간격을 조금 좁게 설정
-                    */}
-                            {/* 서브 타이틀 */}
-                            <span className="
-                            block 
-                            text-[18px]
-                            font-medium 
-                            text-[#3f3f3f] 
-                            mt-2 
+                        <img src={battleFrontierImg} 
+                            alt="Battle Frontier" 
+                            className="
+                                w-full 
+                                h-full 
+                                object-cover
+                        " />
+                    </figure>
+
+                    <div className="
+                        card-body 
+                        lg:w-1/2 
+                        p-8 
+                        justify-center 
+                        text-left 
+                        items-start
                         ">
-                                {/* (당신과 닮은 포켓몬 트레이너는?) */}
+                        <h1 className="
+                            block 
+                            text-[24px] 
+                            font-[900] 
+                            text-[#1a1a1a] 
+                            leading-[1.3] 
+                            tracking-tight
+                        ">
+                            あなたに似ているポケモントレーナーは？ 
+                            <span className="
+                                block 
+                                text-[18px] 
+                                font-medium 
+                                text-[#3f3f3f] 
+                                mt-2
+                            ">
+                                (당신과 닮은 포켓몬 트레이너는?)
                             </span>
                         </h1>
 
-                        {/* 설명 문구 영역 */}
                         <div className="
-                        text-left 
-                        my-[25px]
-                        max-w-[400px]
-                    ">
-                            {/* 
-                    text-left: 텍스트 왼쪽 정렬
-                    my-[25px]: 상하 마진 25px
-                    max-w-[400px]: 최대 너비 400px
-                    */}
-                            {/* 메인 일문 설명 */}
-                            <p className="
-                            text-[16px] 
-                            font-medium 
-                            text-[#888888] 
-                            leading-[1.6]
+                            text-left 
+                            my-[25px] 
+                            max-w-[400px]
                         ">
+                            <p className="
+                                text-[16px] 
+                                font-medium 
+                                text-[#888888] 
+                                leading-[1.6]
+                            ">
                                 12個の質問に答えて、あなたの性格(MBTI)に一番近いポケモントレーナーを見つけよう！
                             </p>
-                            {/* 국문 번역 설명 */}
                             <p className="
-                            text-[14px]
-                            font-normal 
-                            text-[#888888]
-                            leading-[1.6] 
-                            mt-[6px]
-                        ">
-                                {/* (12개의 질문에 답하고 당신의 성격과 가장 가까운 트레이너를 찾아보세요!) */}
+                                text-[14px] 
+                                font-normal 
+                                text-[#888888] 
+                                leading-[1.6] 
+                                mt-[6px]
+                            ">
+                                (12개의 질문에 답하고 당신의 성격과 가장 가까운 트레이너를 찾아보세요!)
                             </p>
-                            {/* 
-                        text-[15px]: 폰트 사이즈 15px
-                        font-medium: 폰트 두께 중
-                        text-[#888888]: 글자 색상
-                        leading-[1.6]: 줄 간격 1.6
-                        */}
                         </div>
-
-                        <div className="w-full mt-[30px]">
-                            <button className="
+                        <div className="
                             w-full 
-                            h-[55px]
-                            bg-[#e3350d] 
-                            text-white 
-                            text-[17px]
-                            font-bold 
-                            rounded-md 
-                            cursor-pointer 
-                            flex 
-                            items-center 
-                            justify-center 
-                            gap-2 
-                            shadow-[0_8px_20px_rgba(0,123,255,0.3)] 
-                            
-                            hover:bg-[#c92f0c] 
-                            hover:-translate-y-[2px]                             
-                            transition-all 
-                            duration-300
-                            "
-                                onClick={() => console.log("테스트 시작!")}>
-                                <span>テスト開始 
-                                    {/* (테스트 시작하기) */}
-                                    →</span>
+                            mt-[30px]
+                        "> 
+                            <button className="
+                                w-full h-[55px] 
+                                bg-[#e3350d] 
+                                text-white 
+                                text-[17px] 
+                                font-bold 
+                                rounded-md 
+                                
+                                flex 
+                                items-center 
+                                justify-center 
+                                gap-2 
+                                shadow-[0_8px_20px_rgba(227,53,13,0.3)] 
+                                
+                                cursor-pointer 
+                                hover:bg-[#c92f0c] 
+                                hover:-translate-y-[2px] 
+                                transition-all 
+                                duration-300
+                            " onClick={() => setStep('quiz')}>
+                                <span>テスト開始 (테스트 시작하기)→</span>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
+
+            {/* 2. Quiz */}
+            {step === 'quiz' && (
+                <div className="
+                    bg-white 
+                    shadow-2xl 
+                    max-w-[850px] 
+                    w-full 
+                    rounded-[16px] 
+                    flex 
+                    flex-col 
+                    items-center 
+                    p-[60px_20px] 
+                    md:p-[80px_40px] 
+                    box-border
+                ">
+                    <div className="
+                        w-full 
+                        max-w-[600px] 
+                        mb-[50px]
+                    ">
+                        <div className="
+                            text-right 
+                            font-bold 
+                            text-[#e3350d] 
+                            text-[20px] 
+                            mb-[10px]
+                        ">
+                            {currentIdx + 1} / {questionsData.length}
+                            {/* 
+                            currentIdx: 現在の質問のインデックス
+                            questionsData.length: 質問の総数
+                            */}
+                        </div>
+                        <div className="w-full h-[12px] bg-[#eee] rounded-full overflow-hidden">
+                            <div className="h-full bg-[#e3350d] rounded-full transition-all duration-300" style={{ width: `${progressPercent}%` }}></div>
+                        </div>
+                    </div>
+                    
+                    <h2 className="text-[24px] md:text-[28px] font-bold text-center text-[#333] mb-[60px] leading-[1.5]">
+                        {currentQ.qJp}<br/>
+                        <span className="block text-[16px] md:text-[18px] text-[#888] font-normal mt-[15px]">
+                            {currentQ.qKo}
+                        </span>
+                        {/* 
+                        currentQ.qJp: 日本語の質問文
+                        currentQ.qKo: 韓国語の質問文
+                        */}
+                    </h2>
+
+                    <button 
+                        className="
+                            w-full 
+                            max-w-[600px] 
+                            bg-[#faf7dc] 
+                            border-2 
+                            border-[#eee] 
+                            p-[20px] 
+                            md:p-[25px] 
+                            rounded-[12px] 
+                            mb-[20px] 
+                            text-center 
+
+                            cursor-pointer
+                            transition-all 
+                            duration-200 
+                            hover:border-[#e3350d] 
+                            hover:bg-[#eee] 
+                            hover:scale-[1.02]
+                        "onClick={() => handleAnswer(currentQ.type, currentQ.scoreA)}>
+
+                        <span className="
+                            block 
+                            text-[18px] 
+                            md:text-[20px] 
+                            font-bold 
+                            text-[#333]
+                        ">{currentQ.aJp}</span>
+                        <span className="
+                            block 
+                            text-[14px] 
+                            md:text-[16px] 
+                            text-[#888] 
+                            font-normal 
+                            mt-[5px]
+                        ">{currentQ.aKo}</span>
+                        {/* 
+                        currentQ.aJp: 日本語の選択肢文
+                        currentQ.aKo: 韓国語の選択肢文
+                        */}
+                    </button>
+
+                    <button 
+                        className="
+                            w-full 
+                            max-w-[600px] 
+                            bg-[#faf7dc] 
+                            border-2 
+                            border-[#eee] 
+                            p-[20px] 
+                            md:p-[25px] 
+                            rounded-[12px] 
+                            mb-[20px] 
+                            cursor-pointer
+                            text-center 
+                            transition-all 
+                            duration-200 
+                            hover:border-[#e3350d] 
+                            hover:bg-[#eee] 
+                            hover:scale-[1.02]
+                        "onClick={() => handleAnswer(currentQ.type, currentQ.scoreB)}>
+                        
+                        <span className="
+                            block 
+                            text-[18px] 
+                            md:text-[20px] 
+                            font-bold 
+                            text-[#333]
+                        ">{currentQ.bJp}</span>
+                        <span className="
+                            block 
+                            text-[14px] 
+                            md:text-[16px] 
+                            text-[#888] 
+                            font-normal 
+                            mt-[5px]
+                        ">{currentQ.bKo}</span>
+                        {/* 
+                        currentQ.bJp: 日本語の選択肢文
+                        currentQ.bKo: 韓国語の選択肢文
+                        */}
+                    </button>
+                </div>
+            )}
+
+            {/* 3. Result */}
+            {step === 'result' && (
+                <div className="
+                    bg-white 
+                    shadow-2xl 
+                    max-w-[1100px] 
+                    w-full 
+                    rounded-[16px] 
+                    flex 
+                    flex-col 
+                    md:flex-row 
+                    p-[40px] 
+                    md:p-[60px] 
+                    gap-[40px] 
+                    md:gap-[60px] 
+                    box-border 
+                    text-left
+                ">
+                    {/* 左側：メイン結果 */}
+                    <div className="
+                        flex-1 
+                        flex 
+                        flex-col 
+                        items-center 
+                        md:border-r 
+                        border-[#eee] 
+                        md:pr-[60px]
+                    ">
+                        <div className="
+                            text-[20px] 
+                            md:text-[24px] 
+                            text-[#888] 
+                            font-bold 
+                            mb-[10px]
+                        ">
+                            {currentResult.typeNameJp}
+                        </div>
+                        <div className="
+                            text-[32px] 
+                            md:text-[42px] 
+                            font-[900] 
+                            mb-[30px] 
+                            text-[#333]
+                        ">
+                            {currentResult.nameJp} 
+                            <span className="
+                                text-[20px] 
+                                md:text-[24px] 
+                                text-[#777] 
+                                font-normal
+                            ">
+                                ({currentResult.nameKo})
+                            </span>
+                            {/* 
+                            currentResult.nameJp: 日本語の結果名
+                            currentResult.nameKo: 韓国語の結果名
+                            */}
+                        </div>
+                        
+                        <div className="
+                            w-[250px] 
+                            md:w-[350px] 
+                            h-[250px] 
+                            md:h-[350px] 
+                            mb-[40px] 
+                            flex 
+                            justify-center 
+                            items-center
+                        ">
+                            <div className="
+                                w-full 
+                                h-full 
+                                bg-slate-100 
+                                rounded-md 
+                                flex 
+                                items-center 
+                                justify-center 
+                                drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)] 
+                                overflow-hidden
+                            ">
+                                {currentResult.imgRef && imageMap[currentResult.imgRef] ? (
+                                    <img src={imageMap[currentResult.imgRef]} 
+                                        alt={currentResult.nameJp} 
+                                        className="
+                                            w-full 
+                                            h-full 
+                                            object-contain
+                                    " />
+                                ) : (
+                                    <span className="
+                                        text-slate-400 
+                                        font-bold
+                                    ">
+                                        Image
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                        
+                        <div className="
+                            bg-[#f9f9f9] 
+                            p-[25px] 
+                            rounded-[16px] 
+                            text-[16px] 
+                            md:text-[18px] 
+                            leading-[1.8] 
+                            border 
+                            border-[#eee] 
+                            text-justify 
+                            w-full
+                        ">
+                            {currentResult.descJp}
+                            <span className="
+                                block 
+                                text-[14px] 
+                                md:text-[16px] 
+                                text-[#777] 
+                                mt-3
+                            ">
+                                {currentResult.descKo}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* 右側：相性及びアクション */}
+                    <div className="
+                        flex-1 
+                        flex 
+                        flex-col 
+                        justify-center
+                    ">
+                        <div className="
+                            text-[20px] 
+                            md:text-[22px] 
+                            font-bold 
+                            mb-[25px] 
+                            text-[#333] 
+                            border-b-2 
+                            border-[#333] 
+                            pb-[10px] 
+                            self-start
+                        ">
+                            トレーナー相性 
+                            <span className="
+                                text-[16px] 
+                                text-[#888] 
+                                font-normal 
+                                ml-2
+                            ">
+                                (트레이너 궁합)
+                            </span>
+                        </div>
+
+                        <div className="
+                            flex 
+                            flex-col 
+                            gap-[20px] 
+                            mb-[50px]
+                        ">
+                            {/* 相性バツグン */}
+                            <div className="
+                                bg-[#e8f5e9] 
+                                border 
+                                border-[#c8e6c9] 
+                                p-[20px] 
+                                rounded-[16px] 
+                                flex 
+                                items-center 
+                                gap-[20px] 
+                                transition-transform 
+                                duration-200 
+                                hover:translate-x-[10px]
+                            ">
+                                <div className="
+                                    w-[80px] 
+                                    h-[80px] 
+                                    md:w-[110px] 
+                                    md:h-[110px] 
+                                    bg-white 
+                                    rounded-md 
+                                    flex 
+                                    justify-center 
+                                    items-center 
+                                    drop-shadow-[0_8px_8px_rgba(0,0,0,0.1)] 
+                                    overflow-hidden
+                                ">
+                                    {currentResult.matchGood.imgRef && imageMap[currentResult.matchGood.imgRef] ? (
+                                        <img src={imageMap[currentResult.matchGood.imgRef]} 
+                                            alt={currentResult.matchGood.nameJp} 
+                                            className="
+                                                w-full 
+                                                h-full 
+                                                object-contain
+                                        " />
+                                    ) : "❓"}
+                                </div>
+
+                                <div className="
+                                    flex 
+                                    flex-col
+                                ">
+                                    <span className="
+                                        text-[14px] 
+                                        md:text-[16px] 
+                                        font-bold 
+                                        text-[#2e7d32] 
+                                        mb-[5px]
+                                    ">
+                                        相性バツグン (찰떡궁합)
+                                    </span>
+                                    
+                                    <span className="
+                                        text-[20px] 
+                                        md:text-[24px] 
+                                        font-bold 
+                                        text-[#333]
+                                    ">
+                                        {currentResult.matchGood.nameJp} 
+                                        <span className="
+                                            text-[14px] 
+                                            md:text-[16px] 
+                                            font-normal 
+                                            text-[#666]
+                                        ">
+                                            ({currentResult.matchGood.nameKo})
+                                        </span>
+                                    </span>
+                                    {/* 
+                                    currentResult.matchGood.nameJp: 日本語の相性の良いトレーナーの名前
+                                    currentResult.matchGood.nameKo: 韓国語の相性の良いトレーナーの名前
+                                    */}
+
+                                    <span className="
+                                        text-[14px] 
+                                        md:text-[16px] 
+                                        text-[#666] 
+                                        font-bold 
+                                        mt-[5px]
+                                        ">
+                                            {currentResult.matchGood.mbti}
+                                    </span>
+                                        {/* 
+                                        currentResult.matchGood.mbti: 相性の良いトレーナーのMBTIタイプ
+                                        */}
+                                </div>
+                            </div>
+
+                            {/* 相性イマイチ */}
+                            <div className="
+                                bg-[#ffebee] 
+                                border 
+                                border-[#ffcdd2] 
+                                p-[20px] 
+                                rounded-[16px] 
+                                flex 
+                                items-center 
+                                gap-[20px] 
+                                transition-transform 
+                                duration-200 
+                                hover:translate-x-[10px]
+                            ">
+                                <div className="
+                                    w-[80px] 
+                                    h-[80px] 
+                                    md:w-[110px] 
+                                    md:h-[110px] 
+                                    bg-white 
+                                    rounded-md 
+                                    flex 
+                                    justify-center 
+                                    items-center 
+                                    drop-shadow-[0_8px_8px_rgba(0,0,0,0.1)] 
+                                    overflow-hidden
+                                ">
+                                    {currentResult.matchBad.imgRef && imageMap[currentResult.matchBad.imgRef] ? (
+                                        <img src={imageMap[currentResult.matchBad.imgRef]} 
+                                            alt={currentResult.matchBad.nameJp} 
+                                            className="
+                                                w-full 
+                                                h-full 
+                                                object-contain
+                                        " />
+                                    ) : "❓"}
+                                </div>
+                                <div className="
+                                    flex 
+                                    flex-col
+                                ">
+                                    <span className="
+                                        text-[14px] 
+                                        md:text-[16px] 
+                                        font-bold 
+                                        text-[#c62828] 
+                                        mb-[5px]
+                                    ">
+                                        相性イマイチ (상극)
+                                    </span>
+                                    <span className="
+                                        text-[20px] 
+                                        md:text-[24px] 
+                                        font-bold 
+                                        text-[#333]
+                                    ">
+                                        {currentResult.matchBad.nameJp} 
+                                        <span className="
+                                            text-[14px] 
+                                            md:text-[16px] 
+                                            font-normal 
+                                            text-[#666]
+                                        ">
+                                            ({currentResult.matchBad.nameKo})
+                                        </span>
+                                    </span>
+                                    {/* 
+                                    currentResult.matchBad.nameJp: 日本語の相性の悪いトレーナーの名前
+                                    currentResult.matchBad.nameKo: 韓国語の相性の悪いトレーナーの名前
+                                    */}
+                                    <span className="
+                                        text-[14px] 
+                                        md:text-[16px] 
+                                        text-[#666] 
+                                        font-bold 
+                                        mt-[5px]
+                                    ">
+                                        {currentResult.matchBad.mbti}
+                                    </span>
+                                    {/* 
+                                    currentResult.matchBad.mbti: 相性の悪いトレーナーのMBTI
+                                    */}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* アクションボタン */}
+                        <div className="
+                            flex 
+                            gap-[20px]
+                        ">
+                            <button className="
+                                flex-1 
+                                bg-[#e3350d] 
+                                text-white 
+                                p-[18px] 
+                                rounded-[12px] 
+                                font-bold text-[16px] 
+                                md:text-[18px] 
+                                text-center 
+
+                                transition-all 
+                                hover:bg-[#c92f0c] 
+                                hover:-translate-y-[2px]
+                            ">
+                                結果を保存する 
+                                <span className="
+                                    block 
+                                    text-[12px] 
+                                    md:text-[14px] 
+                                    font-normal 
+                                    mt-1
+                                ">
+                                    (결과 저장하기)
+                                </span>
+                            </button>
+                            <button 
+                                className="
+                                    flex-1 
+                                    bg-white 
+                                    text-[#333] 
+                                    border-2 
+                                    border-[#ddd] 
+                                    p-[18px] 
+                                    rounded-[12px] 
+                                    font-bold 
+                                    text-[16px] 
+                                    md:text-[18px] 
+                                    text-center 
+                                    
+                                    transition-all 
+                                    hover:border-[#333] 
+                                    hover:bg-[#f9f9f9]
+                                " onClick={handleRestart}>
+                                    もう一度診断する 
+                                    <span className="
+                                        block 
+                                        text-[12px] 
+                                        md:text-[14px] 
+                                        font-normal 
+                                        mt-1
+                                    ">
+                                        (다시 하기)
+                                    </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

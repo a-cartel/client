@@ -1,0 +1,45 @@
+{
+  "INTJ": {
+    "typeNameJp": "INTJ (建築家)", "typeNameKo": "INTJ (건축가)",
+    "nameJp": "ワタル", "nameKo": "목호", "imgRef": "lance",
+    "descJp": "あなたはワタルのように、独創的なアイデアと強い意志を持つ戦略家タイプ！目標に向かって一直線に進むカリスマ性があります。",
+    "descKo": "(당신은 목호처럼 독창적인 아이디어와 강한 의지를 가진 전략가! 목표를 향해 일직선으로 나아가는 카리스마가 있습니다.)",
+    "matchGood": { "mbti": "ENTP", "nameJp": "カンナ", "nameKo": "칸나", "imgRef": "lorelei" },
+    "matchBad": { "mbti": "ESFP", "nameJp": "リョウ", "nameKo": "충호", "imgRef": "aaron" }
+  },
+  "ENTP": {
+    "typeNameJp": "ENTP (討論者)", "typeNameKo": "ENTP (토론자)",
+    "nameJp": "カンナ", "nameKo": "칸나", "imgRef": "lorelei",
+    "descJp": "頭の回転が速く、常に新しい挑戦を楽しむタイプ！鋭い観察眼と戦術的センスを併せ持ちます。",
+    "descKo": "(두뇌 회전이 빠르고 항상 새로운 도전을 즐기는 타입! 날카로운 관찰안과 전술적 센스를 겸비하고 있습니다.)",
+    "matchGood": { "mbti": "INTJ", "nameJp": "ワタル", "nameKo": "목호", "imgRef": "lance" },
+    "matchBad": { "mbti": "ISFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }
+  },
+  "ESFP": {
+    "typeNameJp": "ESFP (エンターテイナー)", "typeNameKo": "ESFP (연예인)",
+    "nameJp": "リョウ", "nameKo": "충호", "imgRef": "aaron",
+    "descJp": "周囲を明るくするエネルギーに満ち溢れ、今この瞬間を全力で楽しむ情熱的なトレーナータイプです！",
+    "descKo": "(주변을 밝게 만드는 에너지가 넘쳐흐르며, 지금 이 순간을 전력으로 즐기는 열정적인 트레이너 타입입니다!)",
+    "matchGood": { "mbti": "ISFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" },
+    "matchBad": { "mbti": "INTJ", "nameJp": "ワタル", "nameKo": "목호", "imgRef": "lance" }
+  },
+  "INTP": {
+    "typeNameJp": "INTP (準備中)", "typeNameKo": "INTP (준비중)",
+    "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder",
+    "descJp": "データ収集中です。","descKo": "(데이터 수집중입니다.)",
+    "matchGood": { "mbti": "ENTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" },
+    "matchBad": { "mbti": "ESFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }
+  },
+  "ENTJ": { "typeNameJp": "ENTJ (準備中)", "typeNameKo": "ENTJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "INTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ISFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "INFJ": { "typeNameJp": "INFJ (準備中)", "typeNameKo": "INFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ENFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ESTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ENFJ": { "typeNameJp": "ENFJ (準備中)", "typeNameKo": "ENFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "INFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ISTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "INFP": { "typeNameJp": "INFP (準備中)", "typeNameKo": "INFP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ENFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ESTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ENFP": { "typeNameJp": "ENFP (準備中)", "typeNameKo": "ENFP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "INFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ISTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ISTJ": { "typeNameJp": "ISTJ (準備中)", "typeNameKo": "ISTJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ESTJ": { "typeNameJp": "ESTJ (準備中)", "typeNameKo": "ESTJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ISFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "INFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ISFJ": { "typeNameJp": "ISFJ (準備中)", "typeNameKo": "ISFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ESFJ": { "typeNameJp": "ESFJ (準備中)", "typeNameKo": "ESFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ISTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "INTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ISTP": { "typeNameJp": "ISTP (準備中)", "typeNameKo": "ISTP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ESTP": { "typeNameJp": "ESTP (準備中)", "typeNameKo": "ESTP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ISFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "INFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
+  "ISFP": { "typeNameJp": "ISFP (準備中)", "typeNameKo": "ISFP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } }
+}
