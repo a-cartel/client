@@ -69,7 +69,6 @@ export default function Mbti() {
     return (
         <div className="
             min-h-screen 
-            bg-[#f8f8ba] 
             flex 
             flex-col 
             items-center 
@@ -392,7 +391,6 @@ export default function Mbti() {
                             <div className="
                                 w-full 
                                 h-full 
-                                bg-slate-100 
                                 rounded-md 
                                 flex 
                                 items-center 
@@ -498,7 +496,6 @@ export default function Mbti() {
                                     h-[80px] 
                                     md:w-[110px] 
                                     md:h-[110px] 
-                                    bg-white 
                                     rounded-md 
                                     flex 
                                     justify-center 
@@ -586,7 +583,6 @@ export default function Mbti() {
                                     h-[80px] 
                                     md:w-[110px] 
                                     md:h-[110px] 
-                                    bg-white 
                                     rounded-md 
                                     flex 
                                     justify-center 
