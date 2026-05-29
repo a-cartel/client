@@ -1,14 +1,41 @@
+// １６人のトレーナーの画像をインポート
 import lanceImg from '../assets/Lance.png'
 import loreleiImg from '../assets/Lorelei.png'
 import aaronImg from '../assets/Aaron.png'
+import brockImg from '../assets/Brock.png'
+import cherenImg from '../assets/Cheren.png'
+import colressImg from '../assets/Colress.png'
+import cynthiaImg from '../assets/Cynthia.png'
+import dawnImg from '../assets/Dawn.png'
+import giovanniImg from '../assets/Giovanni.png'
+import greenImg from '../assets/Green.png'
+import leonImg from '../assets/Leon.png'
+import nemonaImg from '../assets/Nemona.png'
+import raihanImg from '../assets/Raihan.png'
+import redImg from '../assets/Red.png'
+import serenaImg from '../assets/Serena.png'
+import wallyImg from '../assets/Wally.png'
+
 import resultsData from './results.json'
 
-// イメージ参照文字列を実際のインポートされたモジュールにマッピングするオブジェクト
-// 例: 'lance'という文字列が入るとlanceImgモジュールを返す
+// イメージ参照文字列を実際のインポートされたモジュールにマッピング
 const imageMap: Record<string, string> = {
     'lance': lanceImg,
     'lorelei': loreleiImg,
     'aaron': aaronImg,
+    'brock': brockImg,
+    'cheren': cherenImg,
+    'colress': colressImg,
+    'cynthia': cynthiaImg,
+    'dawn': dawnImg,
+    'giovanni': giovanniImg,
+    'green': greenImg,
+    'leon': leonImg,
+    'nemona': nemonaImg,
+    'raihan': raihanImg,
+    'red': redImg,
+    'serena': serenaImg,
+    'wally': wallyImg,
     'placeholder': '' 
 }
 
@@ -55,7 +82,12 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                     font-bold 
                     mb-[10px]
                 ">
-                    {currentResult.typeNameJp}
+                    <span>
+                        {currentResult.typeNameJp}
+                    </span>
+                    <span>
+                        {currentResult.typeNameKo}
+                    </span>
                 </div>
                 <div className="
                     text-[32px] 

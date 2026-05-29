@@ -8,38 +8,123 @@
     "matchBad": { "mbti": "ESFP", "nameJp": "リョウ", "nameKo": "충호", "imgRef": "aaron" }
   },
   "ENTP": {
-    "typeNameJp": "ENTP (討論者)", "typeNameKo": "ENTP (토론자)",
+    "typeNameJp": "ENTP (討論者)", "typeNameKo": "ENTP (변론가)",
     "nameJp": "カンナ", "nameKo": "칸나", "imgRef": "lorelei",
     "descJp": "頭の回転が速く、常に新しい挑戦を楽しむタイプ！鋭い観察眼と戦術的センスを併せ持ちます。",
     "descKo": "(두뇌 회전이 빠르고 항상 새로운 도전을 즐기는 타입! 날카로운 관찰안과 전술적 센스를 겸비하고 있습니다.)",
     "matchGood": { "mbti": "INTJ", "nameJp": "ワタル", "nameKo": "목호", "imgRef": "lance" },
-    "matchBad": { "mbti": "ISFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }
+    "matchBad": { "mbti": "ISFJ", "nameJp": "タケシ", "nameKo": "웅", "imgRef": "brock" }
   },
   "ESFP": {
     "typeNameJp": "ESFP (エンターテイナー)", "typeNameKo": "ESFP (연예인)",
     "nameJp": "リョウ", "nameKo": "충호", "imgRef": "aaron",
     "descJp": "周囲を明るくするエネルギーに満ち溢れ、今この瞬間を全力で楽しむ情熱的なトレーナータイプです！",
     "descKo": "(주변을 밝게 만드는 에너지가 넘쳐흐르며, 지금 이 순간을 전력으로 즐기는 열정적인 트레이너 타입입니다!)",
-    "matchGood": { "mbti": "ISFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" },
+    "matchGood": { "mbti": "ISFJ", "nameJp": "タケシ", "nameKo": "웅", "imgRef": "brock" },
     "matchBad": { "mbti": "INTJ", "nameJp": "ワタル", "nameKo": "목호", "imgRef": "lance" }
   },
   "INTP": {
-    "typeNameJp": "INTP (準備中)", "typeNameKo": "INTP (준비중)",
-    "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder",
-    "descJp": "データ収集中です。","descKo": "(데이터 수집중입니다.)",
-    "matchGood": { "mbti": "ENTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" },
-    "matchBad": { "mbti": "ESFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }
+    "typeNameJp": "INTP (論理学者)", "typeNameKo": "INTP (논리술사)",
+    "nameJp": "アクロマ", "nameKo": "아크로마", "imgRef": "colress",
+    "descJp": "「ポケモンの潜在能力を引き出すのは何か？」を探求する研究者タイプ。冷静な分析力と知的好奇心を持っています。",
+    "descKo": "('포켓몬의 잠재능력을 이끌어내는 것은 무엇인가?'를 탐구하는 연구자 타입. 냉정한 분석력과 지적 호기심을 가지고 있습니다.)",
+    "matchGood": { "mbti": "ENTJ", "nameJp": "サカキ", "nameKo": "비주기", "imgRef": "giovanni" },
+    "matchBad": { "mbti": "ESFJ", "nameJp": "セレナ", "nameKo": "세레나", "imgRef": "serena" }
   },
-  "ENTJ": { "typeNameJp": "ENTJ (準備中)", "typeNameKo": "ENTJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "INTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ISFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "INFJ": { "typeNameJp": "INFJ (準備中)", "typeNameKo": "INFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ENFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ESTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ENFJ": { "typeNameJp": "ENFJ (準備中)", "typeNameKo": "ENFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "INFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ISTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "INFP": { "typeNameJp": "INFP (準備中)", "typeNameKo": "INFP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ENFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ESTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ENFP": { "typeNameJp": "ENFP (準備中)", "typeNameKo": "ENFP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "INFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ISTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ISTJ": { "typeNameJp": "ISTJ (準備中)", "typeNameKo": "ISTJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ESTJ": { "typeNameJp": "ESTJ (準備中)", "typeNameKo": "ESTJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ISFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "INFP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ISFJ": { "typeNameJp": "ISFJ (準備中)", "typeNameKo": "ISFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ESFJ": { "typeNameJp": "ESFJ (準備中)", "typeNameKo": "ESFJ (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ISTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "INTP", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ISTP": { "typeNameJp": "ISTP (準備中)", "typeNameKo": "ISTP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ESTP": { "typeNameJp": "ESTP (準備中)", "typeNameKo": "ESTP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ISFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "INFJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } },
-  "ISFP": { "typeNameJp": "ISFP (準備中)", "typeNameKo": "ISFP (준비중)", "nameJp": "新米トレーナー", "nameKo": "초보 트레이너", "imgRef": "placeholder", "descJp": "...", "descKo": "...", "matchGood": { "mbti": "ESTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" }, "matchBad": { "mbti": "ENTJ", "nameJp": "???", "nameKo": "???", "imgRef": "placeholder" } }
+  "ENTJ": {
+    "typeNameJp": "ENTJ (指揮官)", "typeNameKo": "ENTJ (통솔자)",
+    "nameJp": "サカキ", "nameKo": "비주기", "imgRef": "giovanni",
+    "descJp": "ロケット団のボスのごとく、野心と圧倒的な統率力を持つリーダータイプ。合理的に組織を動かす力があります。",
+    "descKo": "(로켓단의 보스처럼 야심과 압도적인 통솔력을 가진 리더 타입. 합리적으로 조직을 움직이는 힘이 있습니다.)",
+    "matchGood": { "mbti": "INTP", "nameJp": "アクロマ", "nameKo": "아크로마", "imgRef": "colress" },
+    "matchBad": { "mbti": "ISFP", "nameJp": "ヒカリ", "nameKo": "빛나", "imgRef": "dawn" }
+  },
+  "INFJ": {
+    "typeNameJp": "INFJ (提唱者)", "typeNameKo": "INFJ (옹호자)",
+    "nameJp": "シロナ", "nameKo": "난천", "imgRef": "cynthia",
+    "descJp": "神話や歴史を愛し、ポケモンの心に寄り添うミステリアスなチャンピオン。深い洞察力と慈愛の精神を持ちます。",
+    "descKo": "(신화와 역사를 사랑하며 포켓몬의 마음에 다가가는 신비로운 챔피언. 깊은 통찰력과 자애로운 마음을 가졌습니다.)",
+    "matchGood": { "mbti": "ENFP", "nameJp": "ネモ", "nameKo": "네모", "imgRef": "nemona" },
+    "matchBad": { "mbti": "ESTP", "nameJp": "キバナ", "nameKo": "금랑", "imgRef": "raihan" }
+  },
+  "ENFJ": {
+    "typeNameJp": "ENFJ (主人公)", "typeNameKo": "ENFJ (선도자)",
+    "nameJp": "ダンデ", "nameKo": "단델", "imgRef": "leon",
+    "descJp": "圧倒的なカリスマで皆を引っ張る無敵のチャンピオン。困っている人を放っておけない熱い心を持っています。",
+    "descKo": "(압도적인 카리스마로 모두를 이끄는 무적의 챔피언. 곤란한 사람을 내버려두지 못하는 뜨거운 마음을 가졌습니다.)",
+    "matchGood": { "mbti": "INFP", "nameJp": "ミツル", "nameKo": "민진", "imgRef": "wally" },
+    "matchBad": { "mbti": "ISTP", "nameJp": "レッド", "nameKo": "레드", "imgRef": "red" }
+  },
+  "INFP": {
+    "typeNameJp": "INFP (仲介者)", "typeNameKo": "INFP (중재자)",
+    "nameJp": "ミツル", "nameKo": "민진", "imgRef": "wally",
+    "descJp": "内気ながらも内に秘めた情熱を持つ成長型トレーナー。自分自身の理想とポケモンの絆を何より大切にします。",
+    "descKo": "(내성적이지만 내면에 깊은 열정을 품은 성장형 트레이너. 자신의 이상과 포켓몬과의 유대를 무엇보다 소중히 여깁니다.)",
+    "matchGood": { "mbti": "ENFJ", "nameJp": "ダンデ", "nameKo": "단델", "imgRef": "leon" },
+    "matchBad": { "mbti": "ESTJ", "nameJp": "グリーン", "nameKo": "그린", "imgRef": "blue" }
+  },
+  "ENFP": {
+    "typeNameJp": "ENFP (運動家)", "typeNameKo": "ENFP (활동가)",
+    "nameJp": "ネモ", "nameKo": "네모", "imgRef": "nemona",
+    "descJp": "「バトルしよう！」と誰にでもフレンドリーに接するエネルギッシュな天才。自由な発想で周りを巻き込みます。",
+    "descKo": "('배틀하자!'라며 누구에게나 친근하게 다가가는 에너제틱한 천재. 자유로운 발상으로 주변을 끌어들입니다.)",
+    "matchGood": { "mbti": "INFJ", "nameJp": "シロナ", "nameKo": "난천", "imgRef": "cynthia" },
+    "matchBad": { "mbti": "ISTJ", "nameJp": "チェレン", "nameKo": "체렌", "imgRef": "cheren" }
+  },
+  "ISTJ": {
+    "typeNameJp": "ISTJ (管理者)", "typeNameKo": "ISTJ (현실주의자)",
+    "nameJp": "チェレン", "nameKo": "체렌", "imgRef": "cheren",
+    "descJp": "知識を蓄え、基本に忠実にバトルを展開する真面目な先生タイプ。計画性と責任感が人一倍強いです。",
+    "descKo": "(지식을 쌓고 기본에 충실하게 배틀을 전개하는 성실한 선생님 타입. 계획성과 책임감이 남달리 강합니다.)",
+    "matchGood": { "mbti": "ESTP", "nameJp": "キバナ", "nameKo": "금랑", "imgRef": "raihan" },
+    "matchBad": { "mbti": "ENFP", "nameJp": "ネモ", "nameKo": "네모", "imgRef": "nemona" }
+  },
+  "ESTJ": {
+    "typeNameJp": "ESTJ (幹部)", "typeNameKo": "ESTJ (경영자)",
+    "nameJp": "グリーン", "nameKo": "그린", "imgRef": "green",
+    "descJp": "自信に満ち、効率よく実力を磨くエリートです。勝負に対して非常にストイックで、常に高みを目指します。",
+    "descKo": "(자신감이 넘치고 효율적으로 실력을 기르는 엘리트입니다. 승부에 대해 매우 엄격하며 항상 더 높은 곳을 지향합니다.)",
+    "matchGood": { "mbti": "ISFP", "nameJp": "ヒカリ", "nameKo": "빛나", "imgRef": "dawn" },
+    "matchBad": { "mbti": "INFP", "nameJp": "ミツル", "nameKo": "민진", "imgRef": "wally" }
+  },
+  "ISFJ": {
+    "typeNameJp": "ISFJ (擁護者)", "typeNameKo": "ISFJ (수호자)",
+    "nameJp": "タケシ", "nameKo": "웅", "imgRef": "brock",
+    "descJp": "縁の下の力持ちとして仲間やポケモンを世話する心優しいブリーダータイプ。信頼性が高く、義理堅い性格です。",
+    "descKo": "(보이지 않는 곳에서 동료와 포켓몬을 돌보는 마음씨 고운 브리더 타입. 신뢰성이 높고 의리가 깊은 성격입니다.)",
+    "matchGood": { "mbti": "ESFP", "nameJp": "リョウ", "nameKo": "충호", "imgRef": "aaron" },
+    "matchBad": { "mbti": "ENTP", "nameJp": "カンナ", "nameKo": "칸나", "imgRef": "lorelei" }
+  },
+  "ESFJ": {
+    "typeNameJp": "ESFJ (領事)", "typeNameKo": "ESFJ (집정관)",
+    "nameJp": "セレナ", "nameKo": "세레나", "imgRef": "serena",
+    "descJp": "トレンドに敏感で、仲間との調和を大切にする華やかなパフォーマータイプ。細やかな気配りができます。",
+    "descKo": "(트렌드에 민감하고 동료와의 조화를 소중히 여기는 화려한 퍼포머 타입. 세심한 배려를 잘합니다.)",
+    "matchGood": { "mbti": "ISTP", "nameJp": "レッド", "nameKo": "레드", "imgRef": "red" },
+    "matchBad": { "mbti": "INTP", "nameJp": "アクロマ", "nameKo": "아크로마", "imgRef": "colress" }
+  },
+  "ISTP": {
+    "typeNameJp": "ISTP (巨匠)", "typeNameKo": "ISTP (장인)",
+    "nameJp": "レッド", "nameKo": "레드", "imgRef": "red",
+    "descJp": "言葉よりも行動で示す、孤高の天才トレーナー。状況に応じた柔軟な戦術と冷静な判断力を持ち合わせています。",
+    "descKo": "(말보다 행동으로 보여주는 고고한 천재 트레이너. 상황에 맞는 유연한 전술과 냉정한 판단력을 갖추고 있습니다.)",
+    "matchGood": { "mbti": "ESFJ", "nameJp": "セレナ", "nameKo": "세레나", "imgRef": "serena" },
+    "matchBad": { "mbti": "ENFJ", "nameJp": "ダンデ", "nameKo": "단델", "imgRef": "leon" }
+  },
+  "ESTP": {
+    "typeNameJp": "ESTP (起業家)", "typeNameKo": "ESTP (사업가)",
+    "nameJp": "キバナ", "nameKo": "금랑", "imgRef": "raihan",
+    "descJp": "天候を操り、観客を沸かせるのが大好きなエンターテイナー。逆境さえも楽しむスリルへの適応力があります。",
+    "descKo": "(날씨를 다루며 관객을 열광시키는 것을 좋아하는 엔터테이너. 역경조차도 즐기는 스릴에 대한 적응력이 있습니다.)",
+    "matchGood": { "mbti": "ISTJ", "nameJp": "チェレン", "nameKo": "체렌", "imgRef": "cheren" },
+    "matchBad": { "mbti": "INFJ", "nameJp": "シロナ", "nameKo": "난천", "imgRef": "cynthia" }
+  },
+  "ISFP": {
+    "typeNameJp": "ISFP (冒険家)", "typeNameKo": "ISFP (모험가)",
+    "nameJp": "ヒカリ", "nameKo": "빛나", "imgRef": "dawn",
+    "descJp": "「大丈夫！」と前向きに旅を楽しみ、独自のセンスでポケモンを輝かせるコーディネータータイプ。豊かな感受性を持っています。",
+    "descKo": "('괜찮아!'라며 긍정적으로 여행을 즐기고, 자신만의 센스로 포켓몬을 빛내는 코디네이터 타입. 풍부한 감수성을 가졌습니다.)",
+    "matchGood": { "mbti": "ESTJ", "nameJp": "グリーン", "nameKo": "그린", "imgRef": "blue" },
+    "matchBad": { "mbti": "ENTJ", "nameJp": "サカキ", "nameKo": "비주기", "imgRef": "giovanni" }
+  }
 }
