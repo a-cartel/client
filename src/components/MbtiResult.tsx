@@ -78,16 +78,22 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                 <div className="
                     text-[20px] 
                     md:text-[24px] 
-                    text-[#888] 
+                    text-[#666] 
                     font-bold 
                     mb-[10px]
                 ">
-                    <span>
-                        {currentResult.typeNameJp}
+                    <span className="text-[#333] mr-2">
+                        {finalMbti}
                     </span>
                     <span>
-                        {currentResult.typeNameKo}
+                        ({currentResult.typeNameJp} 
+                        <span className="text-[16px] md:text-[20px] font-normal mx-1">/</span> 
+                        {currentResult.typeNameKo})
                     </span>
+                    {/* 
+                    currentResult.typeNameJp: 日本語のMBTIタイプ名
+                    currentResult.typeNameKo: 韓国語のMBTIタイプ名
+                    */}
                 </div>
                 <div className="
                     text-[32px] 
@@ -98,8 +104,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                 ">
                     {currentResult.nameJp} 
                     <span className="
-                        text-[20px] 
-                        md:text-[24px] 
+                        text-[30px] 
+                        md:text-[40px] 
                         text-[#777] 
                         font-normal
                     ">
@@ -194,8 +200,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                 ">
                     トレーナー相性 
                     <span className="
-                        text-[16px] 
-                        text-[#888] 
+                        text-[18px] 
+                        text-[#666] 
                         font-normal 
                         ml-2
                     ">
@@ -268,8 +274,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                             ">
                                 {currentResult.matchGood.nameJp} 
                                 <span className="
-                                    text-[14px] 
-                                    md:text-[16px] 
+                                    text-[18px] 
+                                    md:text-[20px] 
                                     font-normal 
                                     text-[#666]
                                 ">
@@ -281,8 +287,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                             */}
 
                             <span className="
-                                text-[14px] 
-                                md:text-[16px] 
+                                text-[18px] 
+                                md:text-[20px] 
                                 text-[#666] 
                                 font-bold 
                                 mt-[5px]
@@ -351,8 +357,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                             ">
                                 {currentResult.matchBad.nameJp} 
                                 <span className="
-                                    text-[14px] 
-                                    md:text-[16px] 
+                                    text-[18px] 
+                                    md:text-[20px] 
                                     font-normal 
                                     text-[#666]
                                 ">
@@ -363,8 +369,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                             currentResult.matchBad.nameKo: 韓国語の相性の悪いトレーナーの名前
                             */}
                             <span className="
-                                text-[14px] 
-                                md:text-[16px] 
+                                text-[18px] 
+                                md:text-[20px] 
                                 text-[#666] 
                                 font-bold 
                                 mt-[5px]
@@ -399,8 +405,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                         結果を保存する 
                         <span className="
                             block 
-                            text-[12px] 
-                            md:text-[14px] 
+                            text-[18px] 
+                            md:text-[20px] 
                             font-normal 
                             mt-1
                         ">
@@ -428,8 +434,8 @@ export default function MbtiResult({ finalMbti, handleRestart }: MbtiResultProps
                             もう一度診断する 
                             <span className="
                                 block 
-                                text-[12px] 
-                                md:text-[14px] 
+                                text-[18px] 
+                                md:text-[20px] 
                                 font-normal 
                                 mt-1
                             ">
