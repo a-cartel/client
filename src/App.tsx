@@ -7,7 +7,7 @@ import Auth from './components/Auth.tsx'
 import Mypage from './components/Mypage.tsx'
 import News from './components/News.tsx'
 import Shop from './components/Shop.tsx'
-import Mbti from './components/Mbti.tsx'
+import Mbti from './components/MbtiStart.tsx'
 
 
 export default function App() {
