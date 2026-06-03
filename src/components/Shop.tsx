@@ -1,4 +1,5 @@
 export default function Shop() {
+    
     const storeList = [
         {
             id: 1,
