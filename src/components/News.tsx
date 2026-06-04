@@ -1,6 +1,7 @@
 
 export default function News() {
-    // 📦 1. 알맹이(데이터)들을 배열 안에 예쁘게 모아둡니다.
+    // pagination 적용 전
+
     const newsList = [
         {
             id: 1,
@@ -41,7 +42,6 @@ export default function News() {
         // }
     ];
 
-    // pagination 미적용 상태
     return (
         
         // <div className="flex flex-col items-center">
@@ -51,7 +51,6 @@ export default function News() {
 
                 <div className="grid grid-cols-3 gap-8">
 
-                    {/* 🔄 2. map 함수 등판! 배열을 돌면서 카드를 자동 완성합니다. */}
                     {newsList.map((item) => (
                         <div key={item.id} className="card bg-base-100 w-96 shadow-sm hover:-translate-y-2 hover:shadow-md transition-all duration-300 cursor-pointer">
                             <figure>

@@ -9,6 +9,8 @@ import News from './components/News.tsx'
 import Shop from './components/Shop.tsx'
 import Mbti from './components/MbtiStart.tsx'
 
+// ShopDetail은 개발 진행에 따라 제거 될 수 있습니다.
+import ShopDetail from './components/ShopDetail.tsx'
 
 export default function App() {
   return (
@@ -23,6 +25,9 @@ export default function App() {
         */}
         <Route path="/News" element={<News />} />
         <Route path="/Shop" element={<Shop />} />
+
+        {/* ShopDetail은 개발 진행에 따라 제거될 수 있습니다. */}
+        <Route path="/ShopDetail" element={<ShopDetail />} />
         
         {/* <Route path="/Goods" element={<Goods />} /> */}
         {/* <Route path="/Zukan" element={<Zukan />} /> */}
