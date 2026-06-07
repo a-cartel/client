@@ -25,9 +25,7 @@ export default function App() {
         */}
         <Route path="/News" element={<News />} />
         <Route path="/Shop" element={<Shop />} />
-
-        {/* ShopDetail은 개발 진행에 따라 제거될 수 있습니다. */}
-        <Route path="/ShopDetail" element={<ShopDetail />} />
+        <Route path="/Shop/:id" element={<ShopDetail />} />
         
         {/* <Route path="/Goods" element={<Goods />} /> */}
         {/* <Route path="/Zukan" element={<Zukan />} /> */}
