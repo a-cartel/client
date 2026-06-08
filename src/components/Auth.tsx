@@ -6,6 +6,7 @@ import RegisterImg from '../assets/Register.jpg'
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [activeTab, setActiveTab] = useState("id");
 
     return (
         <div className="p-8">
@@ -66,29 +67,50 @@ export default function Auth() {
                                 </span>
                             </div>
 
-                            {/* 청하님 파트 이메일&비밀번호 찾기 파트(모달) ---------------------------------------------- */}
-
-                            {/* 모달 예시 */}
+                            {/* 이메일, 비밀번호 찾기 모달 */}
                             {isModalOpen && (
-                                <div className="modal modal-open">
-                                    <div className="modal-box">
-                                        <h3 className="font-bold text-lg">パスワードをお忘れですか？</h3>
-                                        <p className="py-4">登録したメールアドレスを入力してください。</p>
-                                        <input
-                                            type="email"
-                                            placeholder="メールアドレス"
-                                            className="input input-bordered w-full"
-                                        />
-                                        <div className="modal-action">
-                                            <button className="btn btn-primary">送信</button>
-                                            <button className="btn" onClick={() => setIsModalOpen(false)}>閉じる</button>
+                                <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+                                    <div className="relative bg-white rounded-2xl p-6 w-full max-w-md">
+                                        <button
+                                            onClick={() => setIsModalOpen(false)}
+                                            className="absolute right-4 top-4"
+                                        >
+                                            ✕
+                                        </button>
+                                        <h3 className="text-xl font-bold text-center mb-6">アカウント検索</h3>
+                                        <div className="flex justify-center">
+                                            <button
+                                                onClick={() => setActiveTab("id")}
+                                                className={`pb-2 px-4 font-bold ${activeTab === "id" ? "text-red-600 border-b-2 border-red-600" : "text-slate-600"}`}
+                                            >
+                                                IDを探す
+                                            </button>
+                                            <button
+                                                onClick={() => setActiveTab("password")}
+                                                className={`pb-2 px-4 font-bold ${activeTab === "password" ? "text-red-600 border-b-2 border-red-600" : "text-slate-600"}`}
+                                            >
+                                                パスワードを探す
+                                            </button>
                                         </div>
+                                        {activeTab === "id" ? (
+                                            <div className="flex flex-col gap-4 mt-4">
+                                                <div>登録したメールアドレス</div>
+                                                <input type="email" placeholder="example@pokemon.com" className="input input-bordered w-full" />
+                                                <button className="btn bg-red-600 text-white w-full no-animation">IDを検索</button>
+                                            </div>
+                                        ) : (
+                                            <div className="flex flex-col gap-4 mt-4">
+                                                <div>ログインID</div>
+                                                <input type="id" placeholder="pikachu01" className="input input-bordered w-full" />
+                                                <div>登録したメールアドレス</div>
+                                                <input type="email" placeholder="example@pokemon.com" className="input input-bordered w-full" />
+                                                <button className="btn bg-red-600 text-white w-full no-animation">臨時パスワードを送信</button>
+                                            </div>
+                                        )}
                                     </div>
-                                    <div className="modal-backdrop" onClick={() => setIsModalOpen(false)} />
                                 </div>
                             )}
-
-                            {/* 청하님 파트 이메일&비밀번호 찾기 파트(모달) ---------------------------------------------- */}
+                            {/* 모달 끝*/}
 
                             <div className="card-actions justify-end">
                                 <button className="input input-bordered text-white w-full bg-red-600">登録する</button>
