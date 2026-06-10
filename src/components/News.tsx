@@ -1,7 +1,10 @@
+import { useState } from "react";
 
 export default function News() {
-    // pagination 적용 전
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 3;
+    const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+    const indexOfLastItem = indexOfFirstItem + itemsPerPage;
     const newsList = [
         {
             id: 1,
@@ -21,29 +24,36 @@ export default function News() {
             desc: "一日中ゴロゴロしたくなる特大クッションです。",
             img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
         }
-        // ,
-        // {
-        //     id: 4,
-        //     title: "カビゴンの特大クッション",
-        //     desc: "一日中ゴロゴロしたくなる特大クッションです。",
-        //     img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        // },
-        // {
-        //     id: 5,
-        //     title: "カビゴンの特大クッション",
-        //     desc: "一日中ゴロゴロしたくなる特大クッションです。",
-        //     img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        // },
-        // {
-        //     id: 6,
-        //     title: "カビゴンの特大クッション",
-        //     desc: "一日中ゴロゴロしたくなる特大クッションです。",
-        //     img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        // }
+        ,
+        {
+            id: 4,
+            title: "カビゴンの特大クッション",
+            desc: "一日中ゴロゴロしたくなる特大クッションです。",
+            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
+        },
+        {
+            id: 5,
+            title: "カビゴンの特大クッション",
+            desc: "一日中ゴロゴロしたくなる特大クッションです。",
+            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
+        },
+        {
+            id: 6,
+            title: "カビゴンの特大クッション",
+            desc: "一日中ゴロゴロしたくなる特大クッションです。",
+            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
+        },
+        {
+            id: 7,
+            title: "ピカチュウのふかふかぬいぐるみ",
+            desc: "抱きしめ心地抜群のピカチュウぬいぐるみです。",
+            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
+        }
     ];
+    const currentNews = newsList.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(newsList.length / itemsPerPage);
 
     return (
-        
         // <div className="flex flex-col items-center">
         <div className="flex flex-col items-center">
             <div className="p-8">
@@ -51,7 +61,7 @@ export default function News() {
 
                 <div className="grid grid-cols-3 gap-8">
 
-                    {newsList.map((item) => (
+                    {currentNews.map((item) => (
                         <div key={item.id} className="card bg-base-100 w-96 shadow-sm hover:-translate-y-2 hover:shadow-md transition-all duration-300 cursor-pointer">
                             <figure>
                                 <img
@@ -64,6 +74,21 @@ export default function News() {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className="flex justify-center mt-8">
+                    {Array.from({ length: Math.ceil(newsList.length / itemsPerPage) }).map((_, index) => {
+                        const pageNumber = index + 1;
+
+                        return (
+                            <button
+                                key={pageNumber}
+                                onClick={() => setCurrentPage(pageNumber)}
+                                className={`join-item btn ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
+                            >
+                                {pageNumber}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
         </div>
