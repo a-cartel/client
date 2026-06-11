@@ -16,9 +16,8 @@ export default function News() {
                 <h2 className="mb-8 text-xl font-bold ">ニュース</h2>
 
                 <div className="grid grid-cols-3 gap-8">
-
                     {currentNews.map((item) => (
-                        <div key={item.id} className="card bg-base-100 w-96 shadow-sm hover:-translate-y-2 hover:shadow-md transition-all duration-300 cursor-pointer">
+                        <a key={item.id} href={item.url} target="_blank" className="card bg-base-100 w-96 shadow-sm hover:-translate-y-2 hover:shadow-md transition-all duration-300 cursor-pointer">
                             <figure>
                                 <img
                                     src={item.img}
@@ -28,11 +27,12 @@ export default function News() {
                                 <h2 className="card-title">{item.title}</h2>
                                 <p>{item.desc}</p>
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
+
                 <div className="flex justify-center mt-8">
-                    {Array.from({ length: Math.ceil(newsList.length / itemsPerPage) }).map((_, index) => {
+                    {Array.from({ length: totalPages }).map((_, index) => {
                         const pageNumber = index + 1;
 
                         return (
@@ -46,6 +46,7 @@ export default function News() {
                         );
                     })}
                 </div>
+
             </div>
         </div>
     )

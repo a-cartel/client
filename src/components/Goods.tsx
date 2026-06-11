@@ -1,0 +1,62 @@
+import { useState } from "react";
+import { goodsList } from "./GoodsData.ts";
+
+export default function Goods() {
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 4;
+    const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+    const indexOfLastItem = indexOfFirstItem + itemsPerPage;
+    const currentGoods = goodsList.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(goodsList.length / itemsPerPage);
+    const isNew = (targetDate: string) => {
+        const today = new Date();
+        const cleanDate = targetDate.replaceAll(".", "-");
+        const registeredDate = new Date(cleanDate);
+        const diffTime = today.getTime() - registeredDate.getTime();
+        const diffDays = diffTime / (1000 * 60 * 60 * 24);
+        return diffDays >= 0 && diffDays <= 7;
+    }
+
+    return (
+        <div className="flex flex-col items-center">
+            <div className="p-8">
+                <h2 className="mb-8 text-xl font-bold ">グッズ</h2>
+
+                <div className="grid grid-cols-4 gap-8">
+                    {currentGoods.map((item) => (
+                        <a key={item.id}
+                            className="card bg-base-100 shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300 block overflow-hidden rounded-2xl"
+                            href={item.url} target="_blank">
+                            <img src={item.img} alt={item.title} className="w-full h-48 object-cover" />
+                            <div className="card-body p-4">
+                                <h2 className="card-title text-base font-bold">{item.title}</h2>
+                                <div>
+                                    <span>{item.date}</span>
+                                    {isNew(item.date) && <span className="text-red-600 font-bold ml-2">NEW</span>}
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+
+                <div className="flex justify-center mt-8">
+                    {Array.from({ length: totalPages }).map((_, index) => {
+                        const pageNumber = index + 1;
+
+                        return (
+                            <button
+                                key={pageNumber}
+                                onClick={() => setCurrentPage(pageNumber)}
+                                className={`join-item btn ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
+                            >
+                                {pageNumber}
+                            </button>
+                        );
+                    })}
+                </div>
+
+            </div>
+        </div>
+
+    )
+}

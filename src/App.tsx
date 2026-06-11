@@ -8,6 +8,7 @@ import Mypage from './components/Mypage.tsx'
 import News from './components/News.tsx'
 import Shop from './components/Shop.tsx'
 import Mbti from './components/MbtiStart.tsx'
+import Goods from './components/Goods.tsx'
 
 // ShopDetail은 개발 진행에 따라 제거 될 수 있습니다.
 import ShopDetail from './components/ShopDetail.tsx'
@@ -20,16 +21,12 @@ export default function App() {
       <Routes>
         <Route path="/Auth" element={<Auth />} />
         <Route path="/Mypage" element={<Mypage />}></Route>
-        {/*
-        <Route path="/Home" element={<Home />} />
-        */}
+        {/* <Route path="/Home" element={<Home />} /> */}
         <Route path="/News" element={<News />} />
         <Route path="/Shop" element={<Shop />} />
         <Route path="/Shop/:id" element={<ShopDetail />} />
-        
-        {/* <Route path="/Goods" element={<Goods />} /> */}
+        <Route path="/Goods" element={<Goods />} />
         {/* <Route path="/Zukan" element={<Zukan />} /> */}
-    
         <Route path="/Mbti" element={<Mbti />} />
        
       </Routes>
