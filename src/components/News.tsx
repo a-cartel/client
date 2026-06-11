@@ -1,55 +1,11 @@
 import { useState } from "react";
+import { newsList } from "./NewsData";
 
 export default function News() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 3;
     const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
     const indexOfLastItem = indexOfFirstItem + itemsPerPage;
-    const newsList = [
-        {
-            id: 1,
-            title: "ピカチュウのふかふかぬいぐるみ",
-            desc: "抱きしめ心地抜群のピカチュウぬいぐるみです。",
-            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        },
-        {
-            id: 2,
-            title: "モンスターボール型ワイヤレス充電器",
-            desc: "デスク周りを楽しく彩るワイヤレス充電器です。",
-            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        },
-        {
-            id: 3,
-            title: "カビゴンの特大クッション",
-            desc: "一日中ゴロゴロしたくなる特大クッションです。",
-            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        }
-        ,
-        {
-            id: 4,
-            title: "カビゴンの特大クッション",
-            desc: "一日中ゴロゴロしたくなる特大クッションです。",
-            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        },
-        {
-            id: 5,
-            title: "カビゴンの特大クッション",
-            desc: "一日中ゴロゴロしたくなる特大クッションです。",
-            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        },
-        {
-            id: 6,
-            title: "カビゴンの特大クッション",
-            desc: "一日中ゴロゴロしたくなる特大クッションです。",
-            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        },
-        {
-            id: 7,
-            title: "ピカチュウのふかふかぬいぐるみ",
-            desc: "抱きしめ心地抜群のピカチュウぬいぐるみです。",
-            img: "https://www.pokemon.co.jp/PostImages/5a6d21a42481b1942d8583f8198d9b01d7343845.png"
-        }
-    ];
     const currentNews = newsList.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(newsList.length / itemsPerPage);
 

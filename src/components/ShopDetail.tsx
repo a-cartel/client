@@ -3,7 +3,6 @@ import { shopList } from "./ShopData";
 
 export default function ShopDetail() {
     const { id } = useParams();
-
     const currentShop = shopList.find(shop => shop.id === Number(id));
 
     if (!currentShop) {
