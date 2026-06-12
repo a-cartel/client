@@ -11,21 +11,21 @@ export const goodsList: Goods[] = [
         id: 1,
         url: "https://www.takaratomy-arts.co.jp/specials/pokepeace/",
         title: "ポケピースのぬいぐるみミラーとぬいぐるみポーチが登場！",
-        date: "2026.05.22",
+        date: "2026.06.12",
         img: "https://www.pokemon.co.jp/PostImages/76c4f328d62b0c27e09ac481537c2733102a2515.png"
     },
     {
         id: 2,
         url: "https://www.takaratomy-arts.co.jp/items/item.html?n=Y902048",
         title: "カプセルトイに「ポケピース ダイナーマスコットキーホルダー」登場！",
-        date: "2026.06.05",
+        date: "2026.05.29",
         img: "https://www.pokemon.co.jp/PostImages/bd76c73c1904d72711a9cb1f73ccb77026ae8469.jpg"
     },
     {
         id: 3,
         url: "https://www.pokemoncenter-online.com/4521329467573.html?utm_medium=referral&utm_source=official&utm_campaign=official_md_260507_781",
         title: "「ミニテーブル ヌオー」が、ポケモンセンターオンラインに登場！",
-        date: "2026.05.15",
+        date: "2026.05.20",
         img: "https://www.pokemon.co.jp/PostImages/34a6f78a2750d6490201a69e06bef47b20cdf302.jpg"
     },
     {

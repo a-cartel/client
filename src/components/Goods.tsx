@@ -18,8 +18,8 @@ export default function Goods() {
     }
 
     return (
-        <div className="flex flex-col items-center">
-            <div className="p-8">
+        <div className="flex flex-col items-center w-full">
+            <div className="p-8 w-full max-w-7xl mx-atuo">
                 <h2 className="mb-8 text-xl font-bold ">グッズ</h2>
 
                 <div className="grid grid-cols-4 gap-8">

@@ -5,12 +5,12 @@ export default function Shop() {
     
     return (
         <div className="flex flex-col items-center">
-            <div className="p-8 bg-base-200">
+            <div className="p-8 w-full max-w-7xl mx-atuo">
                 <h2 className="mb-8 text-xl font-bold ">ショップ</h2>
 
-                <div className="flex flex-wrap gap-8">
+                <div className="grid grid-cols-3 gap-8">
                     {shopList.map((shop) => (
-                        <div key={shop.id} className="card bg-base-100 w-96 shadow-sm">
+                        <div key={shop.id} className="card bg-base-100 shadow-sm hover:shadow-md duration-300">
                             <figure>
                                 <img src={shop.image} alt={shop.name} />
                             </figure>
