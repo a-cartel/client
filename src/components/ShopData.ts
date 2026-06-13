@@ -29,7 +29,7 @@ export const shopList: Shop[] = [
         phone: "03-6262-3439",
         access: "JR 南船橋駅 徒歩約5分",
         image: "https://shop.pokemon.co.jp/ja/shop/pokemoncenter-tokyobay/images/mv/mv-pokemoncenter-tokyobay-001.webp"
-        },
+    },
     {
         id: 3,
         name: "ポケモンストア 御殿場店",
@@ -39,5 +39,15 @@ export const shopList: Shop[] = [
         phone: "03-6456-1221",
         access: "JR「御殿場駅」／東名「御殿場IC」より無料シャトルバス運行",
         image: "https://shop.pokemon.co.jp/ja/shop/pokemonstore-gotemba/images/mv/mv-pokemonstore-gotemba-001.webp"
-        }
+    },
+    {
+        id: 4,
+        name: "ポケモンストア 御殿場店",
+        address: "静岡県御殿場市深沢1312 御殿場プレミアム・アウトレット内 2630区画",
+        hours: "10:00 - 20:00",
+        holiday: "年中無休",
+        phone: "03-6456-1221",
+        access: "JR「御殿場駅」／東名「御殿場IC」より無料シャトルバス運行",
+        image: "https://shop.pokemon.co.jp/ja/shop/pokemonstore-gotemba/images/mv/mv-pokemonstore-gotemba-001.webp"
+    }
 ]

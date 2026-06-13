@@ -2,15 +2,19 @@ import { useState } from "react";
 import { goodsList } from "./GoodsData.ts";
 
 export default function Goods() {
+
+    // pagination 밑작업
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 4;
     const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
     const indexOfLastItem = indexOfFirstItem + itemsPerPage;
     const currentGoods = goodsList.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(goodsList.length / itemsPerPage);
+
+    // New 태그 밑작업
     const isNew = (targetDate: string) => {
         const today = new Date();
-        const cleanDate = targetDate.replaceAll(".", "-");
+        const cleanDate = targetDate.split('.').join('-');
         const registeredDate = new Date(cleanDate);
         const diffTime = today.getTime() - registeredDate.getTime();
         const diffDays = diffTime / (1000 * 60 * 60 * 24);
@@ -22,6 +26,7 @@ export default function Goods() {
             <div className="p-8 w-full max-w-7xl mx-atuo">
                 <h2 className="mb-8 text-xl font-bold ">グッズ</h2>
 
+                {/* news */}
                 <div className="grid grid-cols-4 gap-8">
                     {currentGoods.map((item) => (
                         <a key={item.id}
@@ -39,15 +44,15 @@ export default function Goods() {
                     ))}
                 </div>
 
+                {/* pagination */}
                 <div className="flex justify-center mt-8">
-                    {Array.from({ length: totalPages }).map((_, index) => {
+                    {[...Array(totalPages).keys()].map((index) => {
                         const pageNumber = index + 1;
-
                         return (
                             <button
                                 key={pageNumber}
                                 onClick={() => setCurrentPage(pageNumber)}
-                                className={`join-item btn ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
+                                className={`join-item btn no-animation ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
                             >
                                 {pageNumber}
                             </button>

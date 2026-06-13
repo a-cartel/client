@@ -21,13 +21,14 @@ export default function News() {
     // New 태그를 위한 밑작업
     const isNew = (targetDate: string) => {
         const today = new Date();
-        const cleanDate = targetDate.replaceAll(".", "-");
+        const cleanDate = targetDate.split('.').join('-');
         const registeredDate = new Date(cleanDate);
         const diffTime = today.getTime() - registeredDate.getTime();
         const diffDays = diffTime / (1000 * 60 * 60 * 24);
         return diffDays >= 0 && diffDays <= 7;
     }
 
+    // 카테고리별로 버튼을 Map()해주기 위한 밑작업
     const categories = [
         { id: "all", label: "すべて" },
         { id: "game", label: "ゲーム" },
@@ -84,14 +85,13 @@ export default function News() {
                 
                 {/* pagination */}
                 <div className="flex justify-center mt-8">
-                    {Array.from({ length: totalPages }).map((_, index) => {
+                    {[...Array(totalPages).keys()].map((index) => {
                         const pageNumber = index + 1;
-
                         return (
                             <button
                                 key={pageNumber}
                                 onClick={() => setCurrentPage(pageNumber)}
-                                className={`join-item btn ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
+                                className={`join-item btn no-animation ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
                             >
                                 {pageNumber}
                             </button>
