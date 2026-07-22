@@ -4,6 +4,7 @@ import axios from "axios";
 
 // 백엔드 데이터 구조에 맞춘 타입 정의
 export interface ShopList {
+    shopId: number;
     shopName: string;
     shopAddress: string;
     shopAccess: string;
@@ -44,32 +45,32 @@ export default function Shop() {
                 {/* shops */}
                 <div className="grid grid-cols-3 gap-8">
                     {currentShops.map((shop) => (
-                        <div key={shop.id} className="card bg-base-100 shadow-sm hover:shadow-md duration-300">
+                        <div key={shop.shopId} className="card bg-base-100 shadow-sm hover:shadow-md duration-300">
                             <figure>
-                                <img src={shop.image} alt={shop.name} />
+                                <img src={shop.shopImg} alt={shop.shopName} />
                             </figure>
 
                             <div className="card-body p-6">
-                                <h2 className="card-title text-xl font-bold text-slate-800 mb-1">{shop.name}</h2>
-                                <p className="text-sm text-slate-400 mb-4">{shop.address}</p>
+                                <h2 className="card-title text-xl font-bold text-slate-800 mb-1">{shop.shopName}</h2>
+                                <p className="text-sm text-slate-400 mb-4">{shop.shopAddress}</p>
 
                                 <div className="bg-slate-50 rounded-xl p-4 text-xs text-slate-600 flex flex-col gap-2">
                                     <div className="flex">
                                         <span className="w-16 font-bold text-slate-500">営業時間</span>
-                                        <span>{shop.hours}</span>
+                                        <span>{shop.shopHours}</span>
                                     </div>
                                     <div className="flex">
                                         <span className="w-16 font-bold text-slate-500">定休日</span>
-                                        <span>{shop.holiday}</span>
+                                        <span>{shop.shopHoliday}</span>
                                     </div>
                                     <div className="flex">
                                         <span className="w-16 font-bold text-slate-500">アクセス</span>
-                                        <span className="flex-1">{shop.access}</span>
+                                        <span className="flex-1">{shop.shopAccess}</span>
                                     </div>
                                 </div>
 
                                 <div className="mt-4 text-sm font-bold text-red-600 flex items-center gap-1 hover:underline cursor-pointer">
-                                    <Link to={`/Shop/${shop.id}`} className="text-red-500 font-bold">
+                                    <Link to={`/Shop/${shop.shopId}`} className="text-red-500 font-bold">
                                         詳しく見る →
                                     </Link>
                                 </div>

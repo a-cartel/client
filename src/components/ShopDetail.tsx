@@ -15,8 +15,23 @@ export interface ShopList {
 
 export default function ShopDetail() {
     const { id } = useParams();
-    const currentShop = shopList.find(shop => shop.id === Number(id));
+    const [currentShop, setCurrentShop] = useState<ShopList | null>(null); //DB 데이터를 담을 state 선언 (기본값 null)
 
+    //axios 요청
+    useEffect(() => {
+        if (!id) return;
+        
+            axios
+                .get<ShopList>(`http://localhost:8081/shop/${id}`)
+                .then((res) => {
+                    setCurrentShop(res.data);
+                })
+                .catch((error) => {
+                    console.error("상점 상세정보 로드 실패💥", error);
+                });
+    }, [id]); // id가 변경될 때마다 호출
+
+    //useEffect로 데이터를 가져오고, currentShop이 null이면 안내 내용 표시
     if (!currentShop) {
         return <div className="p-10 text-center">商店が見つかりませんでした。</div>;
     }
@@ -28,16 +43,16 @@ export default function ShopDetail() {
                 <Link to="/Shop" className="text-red-500 font-bold hover:underline">
                     ← 店舗一覧へ戻る
                 </Link>
-                <h1 className="text-2xl font-bold mt-2">{currentShop.name}</h1>
+                <h1 className="text-2xl font-bold mt-2">{currentShop.shopName}</h1>
             </div>
 
             {/* 상점 이미지 */}
             <div className="card bg-base-100 shadow-md rounded-2xl overflow-hidden p-0">
                 <div className="aspect-[2/1] relative">
                     <img
-                        src={currentShop.image} 
+                        src={currentShop.shopImg} 
                         className="absolute inset-0 w-full h-full object-cover"
-                        alt={currentShop.name}
+                        alt={currentShop.shopName}
                     />
                 </div>
             </div>
@@ -51,26 +66,26 @@ export default function ShopDetail() {
                     <div className="flex flex-col gap-4">
                         <div className="flex">
                             <span className="font-bold w-24 shrink-0">営業時間</span>
-                            <span className="text-base-content/80">{currentShop.hours}</span> 
+                            <span className="text-base-content/80">{currentShop.shopHours}</span> 
                         </div>
                         <div className="flex">
                             <span className="font-bold w-24 shrink-0">定休日</span>
-                            <span className="text-base-content/80">{currentShop.holiday}</span>
+                            <span className="text-base-content/80">{currentShop.shopHoliday}</span>
                         </div>
                         <div className="flex">
                             <span className="font-bold w-24 shrink-0">住所</span>
-                            <span className="text-base-content/80">{currentShop.address}</span>
+                            <span className="text-base-content/80">{currentShop.shopAddress}</span>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-4">
                         <div className="flex">
                             <span className="font-bold w-24 shrink-0">電話番号</span>
-                            <span className="text-slate-500">{currentShop.phone}</span>
+                            <span className="text-slate-500">{currentShop.shopPhone}</span>
                         </div>
                         <div className="flex">
                             <span className="font-bold w-24 shrink-0">アクセス</span>
-                            <span className="text-slate-500">{currentShop.access}</span>
+                            <span className="text-slate-500">{currentShop.shopAccess}</span>
                         </div>
                     </div>
                 </div>
