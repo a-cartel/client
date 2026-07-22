@@ -40,10 +40,10 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="relative hover:bg-transparent hover:text-red-500 group" to="/News">
-              ニュース
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+              <Link className="relative hover:bg-transparent hover:text-red-500 group" to="/News">
+                ニュース
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
           </li>
           <li>
             <Link className="relative hover:bg-transparent hover:text-red-500 group" to="/Shop">
