@@ -1,18 +1,12 @@
 import { useState } from 'react'
+import { useAuth } from '../context/AuthContext'
 
 export default function Mypage() {
     const [nickname, setNickname] = useState('サトシ')
     const [password, setPassword] = useState('')
-    const [previewImg, setPreviewImg] = useState<string | null>(null)
+    // const [previewImg, setPreviewImg] = useState<string | null>(null)
 
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-        if (file) {
-            const reader = new FileReader()
-            reader.onloadend = () => setPreviewImg(reader.result as string)
-            reader.readAsDataURL(file)
-        }
-    }
+    const { setUser } = useAuth();
 
     return (
         <div className="p-8 min-h-screen">
@@ -29,15 +23,15 @@ export default function Mypage() {
                 <div className="bg-white rounded-2xl p-10 shadow-sm flex flex-col gap-8">
 
                     {/* 프로필 이미지 */}
-                    <div className="flex flex-col gap-2">
+                    {/* <div className="flex flex-col gap-2">
                         <label className="font-semibold">
                             プロフィール画像
                             {/* <span className="text-gray-400 text-xs ml-2">（프로필 이미지）</span> */}
-                        </label>
+                        {/* </label>
                         <div className="flex items-center gap-4">
                             <div className="w-20 h-20 rounded-lg bg-gray-200 flex items-center justify-center overflow-hidden">
-                                {previewImg ? (
-                                    <img src={previewImg} alt="preview" className="w-full h-full object-cover" />
+                                {previewImg ? ( */}
+                                    {/* <img src={previewImg} alt="preview" className="w-full h-full object-cover" />
                                 ) : (
                                     <span className="text-gray-400 text-sm">Image</span>
                                 )}
@@ -45,7 +39,7 @@ export default function Mypage() {
                             <label className="btn btn-outline cursor-pointer">
                                 画像を選択
                                 {/* （이미지 선택） */}
-                                <input
+                                {/* <input
                                     type="file"
                                     accept="image/*"
                                     className="hidden"
@@ -53,7 +47,7 @@ export default function Mypage() {
                                 />
                             </label>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* 닉네임 */}
                     <div className="flex flex-col gap-2">

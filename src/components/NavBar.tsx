@@ -1,8 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import { useAuth } from '../context/AuthContext'
 
 export default function Navbar() {
-  const { user, loading } = useAuth();
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await axios.post('http://localhost:8081/auth/logout', {}, { withCredentials: true });
+      setUser(null);
+      navigate('/');
+    } catch (err) {
+      console.error('로그아웃 실패:', err);
+    }
+  };
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -50,8 +62,29 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        {loading ? null : user ? (
-          <span className="text-red-500 font-semibold">{user.email}</span>
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost text-red-500 font-semibold normal-case"
+            >
+              {user.name}
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu dropdown-content bg-base-100 rounded-box z-10 mt-3 w-40 p-2 shadow-md"
+            >
+              <li>
+                <Link to="/MyPage">マイページ</Link>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="text-red-500">
+                  ログアウト
+                </button>
+              </li>
+            </ul>
+          </div>
         ) : (
           <Link className="btn bg-red-600 text-white hover:bg-red-400" to="/Auth">
             ログイン
@@ -59,6 +92,5 @@ export default function Navbar() {
         )}
       </div>
     </div>
-
   )
 }

@@ -19,12 +19,18 @@ export default function Auth() {
     const handleRegisterSubmit = async () => {
         console.log(name, email, password)
         try {
-            const response = await axios.post("http://localhost:8080/auth/register", {
+            const response = await axios.post("http://localhost:8081/auth/register", {
                 name,
                 email,
                 password,
             }, { withCredentials: true });
-            console.log("회원가입 성공:", response.data);
+            if (response.data.success) {
+                setUser({
+                    email: response.data.data.email,
+                    name: response.data.data.name,
+                });
+                navigate('/');
+            }
         } catch (err) {
             if (axios.isAxiosError(err)) {
                 console.log(err.response)
@@ -36,32 +42,35 @@ export default function Auth() {
     };
 
     const handleLoginSubmit = async () => {
-    console.log(name, email, password);
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/auth/login",
-        {
-          email,
-          password,
-        },
-        { withCredentials: true }
-      );
+        console.log(name, email, password);
+        try {
+            const response = await axios.post(
+                "http://localhost:8081/auth/login",
+                {
+                    email,
+                    password,
+                },
+                { withCredentials: true }
+            );
 
-      console.log("로그인 성공:", response.data);
+            console.log("로그인 성공:", response.data);
 
-      if (response.data.login) {
-        setUser({ email: response.data.data.email }); // data 안에서 꺼내기
-        navigate('/');
-      }
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        console.log(err.response);
-        console.error("로그인 실패:", err.response?.data ?? err.message);
-      } else {
-        console.error("알 수 없는 에러:", err);
-      }
-    }
-};
+            if (response.data.success) {
+                setUser({
+                    email: response.data.data.email,
+                    name: response.data.data.name,
+                });
+                navigate('/');
+            }
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                console.log(err.response);
+                console.error("로그인 실패:", err);
+            } else {
+                console.error("알 수 없는 에러:", err);
+            }
+        }
+    };
 
 
 

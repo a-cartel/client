@@ -2,19 +2,18 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 
 interface User {
   email: string;
+  name: string;
 }
 
 interface AuthContextType {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
-  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:8080/auth/status', {
@@ -23,20 +22,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.login) {
-          setUser({ email: data.name });
+          setUser({ email: data.email, name: data.name });
         } else {
           setUser(null);
         }
-        setLoading(false);
       })
       .catch(() => {
         setUser(null);
-        setLoading(false);
       });
-}, []);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
