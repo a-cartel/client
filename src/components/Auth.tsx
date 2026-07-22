@@ -1,12 +1,69 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import LoginImg from '../assets/Login.jpg'
 import RegisterImg from '../assets/Register.jpg'
+import { useAuth } from '../context/AuthContext';
 
-// 861 927
 export default function Auth() {
+    const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [activeTab, setActiveTab] = useState("id");
+    const [activeTab, setActiveTab] = useState("id")
+    const { setUser } = useAuth();
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleRegisterSubmit = async () => {
+        console.log(name, email, password)
+        try {
+            const response = await axios.post("http://localhost:8080/auth/register", {
+                name,
+                email,
+                password,
+            }, { withCredentials: true });
+            console.log("회원가입 성공:", response.data);
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                console.log(err.response)
+                console.error("회원가입 실패:", err.response?.data ?? err.message);
+            } else {
+                console.error("알 수 없는 에러:", err);
+            }
+        }
+    };
+
+    const handleLoginSubmit = async () => {
+    console.log(name, email, password);
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/auth/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+
+      console.log("로그인 성공:", response.data);
+
+      if (response.data.login) {
+        setUser({ email: response.data.data.email }); // data 안에서 꺼내기
+        navigate('/');
+      }
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        console.log(err.response);
+        console.error("로그인 실패:", err.response?.data ?? err.message);
+      } else {
+        console.error("알 수 없는 에러:", err);
+      }
+    }
+};
+
+
 
     return (
         <div className="p-8">
@@ -14,36 +71,22 @@ export default function Auth() {
                 <figure className="lg:w-1/2 overflow-hidden">
                     {isLogin && (
                         <img
-                            // src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
                             src={LoginImg}
                             className="w-full h-full object-cover"
                             alt="Album" />
                     )}
                     {!isLogin && (
                         <img
-                            // src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
                             src={RegisterImg}
                             className="w-full h-full object-cover"
                             alt="Album" />
                     )}
-                    {/* <img
-                    // src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-                    src={LoginImg}
-                    className="w-full h-full object-cover"
-                    alt="Album" /> */}
                 </figure>
                 <div className="card-body flex flex-col items-center justify-center">
 
-                    {isLogin && (
-                        <div className="tab tab-active text-3xl font-bold mb-4">
-                            ログイン
-                        </div>
-                    )}
-                    {!isLogin && (
-                        <div className="tab tab-active text-3xl font-bold mb-4">
-                            レジスタ
-                        </div>
-                    )}
+                    <div className="tab tab-active text-3xl font-bold mb-4">
+                        {isLogin ? "ログイン" : "レジスタ"}
+                    </div>
 
                     {isLogin ? (
                         <div className="flex flex-col gap-4 w-full">
@@ -51,11 +94,15 @@ export default function Auth() {
                                 type="text"
                                 placeholder="ID"
                                 className="input input-bordered w-full"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <input
                                 type="password"
                                 placeholder="Password"
                                 className="input input-bordered w-full"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
 
                             <div className="text-right">
@@ -113,29 +160,47 @@ export default function Auth() {
                             {/* 모달 끝*/}
 
                             <div className="card-actions justify-end">
-                                <button className="input input-bordered text-white w-full bg-red-600">登録する</button>
+                                <button
+                                    className="input input-bordered text-white w-full bg-red-600"
+                                    onClick={handleLoginSubmit}
+                                >ログイン
+                                </button>
                             </div>
                         </div>
                     ) : (
                         /* 회원가입 폼 */
                         <div className="flex flex-col gap-4 w-full">
                             <input
+                                type="name"
+                                placeholder="name"
+                                className="input input-bordered w-full"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                            <input
                                 type="email"
                                 placeholder="ID"
                                 className="input input-bordered w-full"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <input
                                 type="password"
                                 placeholder="PASSWORD"
                                 className="input input-bordered w-full"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
-                            <input
+                            {/* <input
                                 type="password"
                                 placeholder="PASSWORD"
                                 className="input input-bordered w-full"
-                            />
+                            /> */}
                             <div className="card-actions justify-end">
-                                <button className="input input-bordered text-white w-full bg-red-600">ログイン</button>
+                                <button
+                                    className="input input-bordered text-white w-full bg-red-600"
+                                    onClick={handleRegisterSubmit}
+                                >登録する</button>
                             </div>
                         </div>
                     )}

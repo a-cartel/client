@@ -1,5 +1,7 @@
-// import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+
+import { AuthProvider } from './context/AuthContext.tsx';
 
 import Navbar from './components/Navbar.tsx'
 import Footer from './components/Footer.tsx'
@@ -13,9 +15,12 @@ import Goods from './components/Goods.tsx'
 // ShopDetail은 개발 진행에 따라 제거 될 수 있습니다.
 import ShopDetail from './components/ShopDetail.tsx'
 
+
 export default function App() {
+
   return (
     <>
+    <AuthProvider>
       <Navbar />
       <div className="bg-gray-100">
       <Routes>
@@ -24,7 +29,7 @@ export default function App() {
         {/* <Route path="/Home" element={<Home />} /> */}
         <Route path="/News" element={<News />} />
         <Route path="/Shop" element={<Shop />} />
-        <Route path="/Shop/:id" element={<ShopDetail />} />
+        <Route path="/Shop/:area/:name" element={<ShopDetail />} />
         <Route path="/Goods" element={<Goods />} />
         {/* <Route path="/Zukan" element={<Zukan />} /> */}
         <Route path="/Mbti" element={<Mbti />} />
@@ -32,6 +37,7 @@ export default function App() {
       </Routes>
       </div>
       <Footer />
+      </AuthProvider>
     </>
   )
 }
