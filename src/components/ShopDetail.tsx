@@ -1,5 +1,17 @@
 import { useParams, Link } from "react-router-dom";
-import { shopList } from "./ShopData";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+// 백엔드 데이터 구조에 맞춘 타입 정의
+export interface ShopList {
+    shopName: string;
+    shopAddress: string;
+    shopAccess: string;
+    shopHoliday: string;
+    shopHours: string;
+    shopPhone: string;
+    shopImg: string;
+}
 
 export default function ShopDetail() {
     const { id } = useParams();

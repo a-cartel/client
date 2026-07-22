@@ -1,16 +1,39 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { shopList } from "./ShopData";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+// 백엔드 데이터 구조에 맞춘 타입 정의
+export interface ShopList {
+    shopName: string;
+    shopAddress: string;
+    shopAccess: string;
+    shopHoliday: string;
+    shopHours: string;
+    shopPhone: string;
+    shopImg: string;
+}
 
 export default function Shop() {
+
+    const [ShopList, setShopList] = useState<ShopList[]>([]);
+
+    useEffect(() => {
+        axios.get<ShopList[]>("http://localhost:8081/shop")
+            .then((response) => {
+                setShopList(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching shop data:", error);
+            });
+    }, []);
 
     // pagination 밑작업
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 3;
     const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
     const indexOfLastItem = indexOfFirstItem + itemsPerPage;
-    const currentShops = shopList.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(shopList.length / itemsPerPage);
+    const currentShops = ShopList.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(ShopList.length / itemsPerPage);
 
     return (
         <div className="flex flex-col items-center">

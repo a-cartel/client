@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"; // 소문자 axios가 표준적인 import 방식
 
-// 백엔드에서 날라오는 JSON 데이터 타입 정의
+// 백엔드 데이터 구조에 맞춘 타입 정의
 export interface NewsList {
   newsDate: string; // Java의 LocalDateTime은 보통 Typescript의 string으로 받음
   newsId: number;
