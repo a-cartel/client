@@ -56,17 +56,10 @@ export default function Shop() {
 
                                 <div className="bg-slate-50 rounded-xl p-4 text-xs text-slate-600 flex flex-col gap-2">
                                     <div className="flex">
-                                        <span className="w-16 font-bold text-slate-500">営業時間</span>
+                                        <span className="w-48 font-bold text-slate-500">営業時間</span>
                                         <span>{shop.shopHours}</span>
                                     </div>
-                                    <div className="flex">
-                                        <span className="w-16 font-bold text-slate-500">定休日</span>
-                                        <span>{shop.shopHoliday}</span>
-                                    </div>
-                                    <div className="flex">
-                                        <span className="w-16 font-bold text-slate-500">アクセス</span>
-                                        <span className="flex-1">{shop.shopAccess}</span>
-                                    </div>
+                                                    
                                 </div>
 
                                 <div className="mt-4 text-sm font-bold text-red-600 flex items-center gap-1 hover:underline cursor-pointer">
