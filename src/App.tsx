@@ -24,7 +24,7 @@ function AppRoutes() {
       <Route path="/Mypage" element={user ? <Mypage /> : <Navigate to="/Auth" replace />} />
       <Route path="/News" element={<News />} />
       <Route path="/Shop" element={<Shop />} />
-      <Route path="/Shop/:area/:name" element={<ShopDetail />} />
+      <Route path="/Shop/:id" element={<ShopDetail />} />
       <Route path="/Goods" element={<Goods />} />
       <Route path="/Zukan" element={<Zukan />} />
       <Route path="/Mbti" element={<Mbti />} />

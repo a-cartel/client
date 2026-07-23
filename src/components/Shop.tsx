@@ -63,7 +63,7 @@ export default function Shop() {
                                 </div>
 
                                 <div className="mt-4 text-sm font-bold text-red-600 flex items-center gap-1 hover:underline cursor-pointer">
-                                    <Link to={`/Shop/${shop.shopId}`} className="text-red-500 font-bold">
+                                    <Link to={`/shop/${shop.shopId}`} className="text-red-500 font-bold">
                                         詳しく見る →
                                     </Link>
                                 </div>
