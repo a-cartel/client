@@ -22,9 +22,6 @@ export interface PageResponse<T> {
   };
 }
 
-
-
-
 export default function News() {
   const [dbNewsList, setDbNewsList] = useState<NewsList[]>([]); // 백엔드에서 받아온 뉴스 데이터
   const [currentPage, setCurrentPage] = useState(0); // Spring은 0페이지부터 시작
@@ -99,9 +96,6 @@ export default function News() {
     //{ id: "anniversary", label: "30th" },
   ];
 
-
-
-
   return (
     <div className="flex flex-col items-center">
       <div className="p-8 w-full max-w-7xl mx-atuo">
@@ -154,22 +148,25 @@ export default function News() {
 
         {/* Pagination */}
         <div className="flex justify-center my-8">
-          <div className="join">
+          {/* 👇 join 대신 flex gap-2 (간격) 또는 gap-1 사용 */}
+          <div className="flex gap-1">
+            {/* 이전 버튼 */}
             <button
-              className="join-item btn btn-outline btn-sm"
+              className="btn no-animation rounded-xl"
               disabled={startPage === 1}
               onClick={() => handlePageChange(startPage - 2)}
             >
               前へ
             </button>
 
+            {/* 페이지 번호 목록 */}
             {pageNumbers.map((page) => (
               <button
                 key={page}
-                className={`join-item btn btn-sm ${
+                className={`btn no-animation rounded-xl ${
                   currentPage === page - 1
-                    ? "btn-active btn-primary"
-                    : "btn-outline"
+                    ? "bg-red-600 text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
                 onClick={() => handlePageChange(page - 1)}
               >
@@ -177,8 +174,9 @@ export default function News() {
               </button>
             ))}
 
+            {/* 다음 버튼 */}
             <button
-              className="join-item btn btn-outline btn-sm"
+              className="btn no-animation rounded-xl"
               disabled={endPage >= totalPages}
               onClick={() => handlePageChange(endPage)}
             >

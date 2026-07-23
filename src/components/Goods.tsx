@@ -52,7 +52,9 @@ export default function Goods() {
                             <button
                                 key={pageNumber}
                                 onClick={() => setCurrentPage(pageNumber)}
-                                className={`join-item btn no-animation ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
+                                className={`join-item btn no-animation ${currentPage === pageNumber 
+                                    ? "bg-red-600 text-white" 
+                                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
                             >
                                 {pageNumber}
                             </button>

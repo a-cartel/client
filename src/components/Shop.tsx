@@ -81,18 +81,20 @@ export default function Shop() {
 
                 {/* pagination */}
                 <div className="flex justify-center mt-8">
+                    <div className="flex gap-2">
                     {[...Array(totalPages).keys()].map((index) => {
                         const pageNumber = index + 1;
                         return (
                             <button
                                 key={pageNumber}
                                 onClick={() => setCurrentPage(pageNumber)}
-                                className={`join-item btn no-animation ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
+                                className={`rounded-xl btn no-animation ${currentPage === pageNumber ? "bg-red-600 text-white" : ""}`}
                             >
                                 {pageNumber}
                             </button>
                         );
                     })}
+                    </div>
                 </div>
 
             </div>
