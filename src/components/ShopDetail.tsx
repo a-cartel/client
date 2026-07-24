@@ -65,27 +65,19 @@ export default function ShopDetail() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-sm">
                     <div className="flex flex-col gap-4">
                         <div className="flex">
-                            <span className="font-bold w-24 shrink-0">営業時間</span>
-                            <span className="text-base-content/80">{currentShop.shopHours}</span> 
-                        </div>
-                        <div className="flex">
-                            <span className="font-bold w-24 shrink-0">定休日</span>
-                            <span className="text-base-content/80">{currentShop.shopHoliday}</span>
-                        </div>
-                        <div className="flex">
                             <span className="font-bold w-24 shrink-0">住所</span>
                             <span className="text-base-content/80">{currentShop.shopAddress}</span>
                         </div>
+                        <div className="flex">
+                            <span className="font-bold w-24 shrink-0">電話番号</span>
+                            <span className="text-slate-500">{currentShop.shopPhone}</span>
+                        </div>     
                     </div>
 
                     <div className="flex flex-col gap-4">
                         <div className="flex">
-                            <span className="font-bold w-24 shrink-0">電話番号</span>
-                            <span className="text-slate-500">{currentShop.shopPhone}</span>
-                        </div>
-                        <div className="flex">
-                            <span className="font-bold w-24 shrink-0">アクセス</span>
-                            <span className="text-slate-500">{currentShop.shopAccess}</span>
+                            <span className="font-bold w-24 shrink-0">営業時間</span>
+                            <span className="text-base-content/80">{currentShop.shopHours}</span> 
                         </div>
                     </div>
                 </div>

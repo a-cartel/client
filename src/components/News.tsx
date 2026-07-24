@@ -123,7 +123,7 @@ export default function News() {
 
         {/* news */}
         {/* 목록을 한줄에 3개씩 */}
-        <div className="grid grid-cols-3 gap-8"> 
+        <div className="grid grid-cols-3 gap-8">
           {filteredNews.map((item, index) => (
             <a
               key={index} // 백엔드에서 newsId를 보내주지 않기 때문에 index를 key로 사용
@@ -185,7 +185,6 @@ export default function News() {
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );
