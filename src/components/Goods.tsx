@@ -1,11 +1,31 @@
-import { useState } from "react";
-import { goodsList } from "./GoodsData.ts";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+export interface GoodsList {
+    GoodsId: number;
+    GoodsUrl: string;
+    GoodsTitle: string;
+    GoodsDate: string;
+    GoodsImg: string;
+}
 
 export default function Goods() {
 
+    const [goodsList, setGoodsList] = useState<GoodsList[]>([]);
+
+    useEffect(() => {
+        axios.get<GoodsList[]>("http://localhost:8081/goods")
+            .then((response) => {
+                setGoodsList(response.data);
+            })
+            .catch((error) => {
+                console.error("データロードに失敗💥:　", error);
+            });
+    }, []);
+
     // pagination 밑작업
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 4;
+    const itemsPerPage = 16;
     const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
     const indexOfLastItem = indexOfFirstItem + itemsPerPage;
     const currentGoods = goodsList.slice(indexOfFirstItem, indexOfLastItem);
@@ -27,17 +47,18 @@ export default function Goods() {
                 <h2 className="mb-8 text-xl font-bold ">グッズ</h2>
 
                 {/* news */}
-                <div className="grid grid-cols-4 gap-8">
+                {/* 목록을 한 줄에 4개씩 */}
+                <div className="grid grid-cols-4 gap-8"> 
                     {currentGoods.map((item) => (
-                        <a key={item.id}
+                        <a key={item.GoodsId}
                             className="card bg-base-100 shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300 block overflow-hidden rounded-2xl"
-                            href={item.url} target="_blank">
-                            <img src={item.img} alt={item.title} className="w-full h-48 object-cover" />
+                            href={item.GoodsUrl} target="_blank">
+                            <img src={item.GoodsImg} alt={item.GoodsTitle} className="w-full h-48 object-cover" />
                             <div className="card-body p-4">
-                                <h2 className="card-title text-base font-bold">{item.title}</h2>
+                                <h2 className="card-title text-base font-bold">{item.GoodsTitle}</h2>
                                 <div>
-                                    <span>{item.date}</span>
-                                    {isNew(item.date) && <span className="text-red-600 font-bold ml-2">NEW</span>}
+                                    <span>{item.GoodsDate}</span>
+                                    {isNew(item.GoodsDate) && <span className="text-red-600 font-bold ml-2">NEW</span>}
                                 </div>
                             </div>
                         </a>
@@ -46,6 +67,7 @@ export default function Goods() {
 
                 {/* pagination */}
                 <div className="flex justify-center mt-8">
+                    <div className="flex gap-1">
                     {[...Array(totalPages).keys()].map((index) => {
                         const pageNumber = index + 1;
                         return (
@@ -60,6 +82,7 @@ export default function Goods() {
                             </button>
                         );
                     })}
+                    </div>
                 </div>
 
             </div>

@@ -24,13 +24,13 @@ export default function Shop() {
                 setShopList(response.data);
             })
             .catch((error) => {
-                console.error("Error fetching shop data:", error);
+                console.error("データロードに失敗💥:　", error);
             });
     }, []);
 
     // pagination 밑작업
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
+    const itemsPerPage = 9;
     const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
     const indexOfLastItem = indexOfFirstItem + itemsPerPage;
     const currentShops = ShopList.slice(indexOfFirstItem, indexOfLastItem);
@@ -43,7 +43,8 @@ export default function Shop() {
                 <h2 className="mb-8 text-xl font-bold ">ショップ</h2>
 
                 {/* shops */}
-                <div className="grid grid-cols-3 gap-8">
+                {/* 목록을 한 줄에 3개씩 */}
+                <div className="grid grid-cols-3 gap-8"> 
                     {currentShops.map((shop) => (
                         <div key={shop.shopId} className="card bg-base-100 shadow-sm hover:shadow-md duration-300">
                             <figure>
@@ -74,7 +75,7 @@ export default function Shop() {
 
                 {/* pagination */}
                 <div className="flex justify-center mt-8">
-                    <div className="flex gap-2">
+                    <div className="flex gap-1">
                     {[...Array(totalPages).keys()].map((index) => {
                         const pageNumber = index + 1;
                         return (

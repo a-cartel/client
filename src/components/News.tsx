@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios"; // 소문자 axios가 표준적인 import 방식
 
 // 백엔드 데이터 구조에 맞춘 타입 정의
@@ -35,13 +35,13 @@ export default function News() {
     axios
       .get<PageResponse<NewsList>>(
         `http://localhost:8081/news?page=${currentPage}&size=9&category=${activityTerm}`,
-      ) // 백엔드에서 뉴스 데이터를 가져오는 API 호출 (임시로 로컬 DB에서 불러오게끔 처리)
+      ) // 백엔드에서 뉴스 데이터를 가져오는 API 호출 (한 페이지에 9개)
       .then((response) => {
         setDbNewsList(response.data.content); // content 안의 데이터 추출
         setTotalPages(response.data.page.totalPages); // 전체 페이지 수 저장
       })
       .catch((error) => {
-        console.error("데이터 로드 실패💥", error);
+        console.error("データロードに失敗💥:　", error);
       });
   }, [currentPage, activityTerm]); // currentPage 또는 activityTerm 값이 바뀌는 순간 useEffect 내부 코드가 다시 실행
 
@@ -122,7 +122,8 @@ export default function News() {
         </div>
 
         {/* news */}
-        <div className="grid grid-cols-3 gap-8">
+        {/* 목록을 한줄에 3개씩 */}
+        <div className="grid grid-cols-3 gap-8"> 
           {filteredNews.map((item, index) => (
             <a
               key={index} // 백엔드에서 newsId를 보내주지 않기 때문에 index를 key로 사용
