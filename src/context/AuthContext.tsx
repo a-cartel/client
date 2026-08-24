@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface User {
+  id: string;
   email: string;
   name: string;
 }
@@ -16,13 +17,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/auth/status', {
+    fetch('http://localhost:8081/auth/status', {
       credentials: 'include',
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.login) {
-          setUser({ email: data.email, name: data.name });
+          setUser({ email: data.email, name: data.name, id:data.id });
         } else {
           setUser(null);
         }

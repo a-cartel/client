@@ -8,7 +8,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8081/auth/logout', {}, { withCredentials: true });
+      await axios.get('http://localhost:8081/auth/logout', { withCredentials: true });
       setUser(null);
       navigate('/');
     } catch (err) {
@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
-        <p className="text-2xl font-bold text-red-500">Pokémon</p>
+        <Link to="/" className="text-2xl font-bold text-red-500">Pokémon</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -53,12 +53,12 @@ export default function Navbar() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link className="relative hover:bg-transparent hover:text-red-500 group" to="/MBTI">
               診断
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="navbar-end">
@@ -69,7 +69,7 @@ export default function Navbar() {
               role="button"
               className="btn btn-ghost text-red-500 font-semibold normal-case"
             >
-              {user.name}
+              ようこそ！　{user.name}
             </div>
             <ul
               tabIndex={0}

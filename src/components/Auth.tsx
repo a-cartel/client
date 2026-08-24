@@ -26,6 +26,7 @@ export default function Auth() {
             }, { withCredentials: true });
             if (response.data.success) {
                 setUser({
+                    id: response.data.data.id,
                     email: response.data.data.email,
                     name: response.data.data.name,
                 });
@@ -35,8 +36,22 @@ export default function Auth() {
             if (axios.isAxiosError(err)) {
                 console.log(err.response)
                 console.error("회원가입 실패:", err.response?.data ?? err.message);
+
+                const status = err.response?.status;
+                const serverMessage = err.response?.data?.message;
+
+                if (serverMessage) {
+                    alert(serverMessage);
+                } else if (!err.response) {
+                    alert("サーバーに接続できませんでした。");
+                } else if (status === 409) {
+                    alert("すでに使用されているメールアドレスです。");
+                } else {
+                    alert("会員登録に失敗しました。");
+                }
             } else {
                 console.error("알 수 없는 에러:", err);
+                alert("会員登録に失敗しました。");
             }
         }
     };
@@ -57,6 +72,7 @@ export default function Auth() {
 
             if (response.data.success) {
                 setUser({
+                    id: response.data.data.id,
                     email: response.data.data.email,
                     name: response.data.data.name,
                 });
@@ -66,8 +82,22 @@ export default function Auth() {
             if (axios.isAxiosError(err)) {
                 console.log(err.response);
                 console.error("로그인 실패:", err);
+
+                const status = err.response?.status;
+                const serverMessage = err.response?.data?.message;
+
+                if (serverMessage) {
+                    alert(serverMessage);
+                } else if (!err.response) {
+                    alert("サーバーに接続できませんでした。");
+                } else if (status === 400 || status === 401) {
+                    alert("メールアドレスまたはパスワードが正しくありません。");
+                } else {
+                    alert("ログインに失敗しました。");
+                }
             } else {
                 console.error("알 수 없는 에러:", err);
+                alert("ログインに失敗しました。");
             }
         }
     };
@@ -114,14 +144,14 @@ export default function Auth() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
 
-                            <div className="text-right">
+                            {/* <div className="text-right">
                                 <span
                                     className="text-sm text-blue-500 cursor-pointer hover:underline"
                                     onClick={() => setIsModalOpen(true)}
                                 >
                                     パスワードをお忘れですか？
                                 </span>
-                            </div>
+                            </div> */}
 
                             {/* 이메일, 비밀번호 찾기 모달 */}
                             {isModalOpen && (
